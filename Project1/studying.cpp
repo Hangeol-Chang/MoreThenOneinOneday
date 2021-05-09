@@ -4,7 +4,7 @@
 using std::cout;		using std::cin;
 using std::endl;		using std::string;
 
-int main() {
+int main1() {
 	cout << "ent name : ";
 	
 	string name;
@@ -39,4 +39,5 @@ int main() {
 			}
 		}
 	}
+	return 0;
 }
