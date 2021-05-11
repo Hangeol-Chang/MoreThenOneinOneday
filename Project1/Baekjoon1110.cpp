@@ -2,7 +2,7 @@
 
 using std::cout;		using std::cin;
 
-int main() {
+int main1110() {
 	int a;
 	cin >> a;
 
