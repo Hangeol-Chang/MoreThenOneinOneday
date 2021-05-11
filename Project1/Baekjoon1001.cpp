@@ -1,7 +1,7 @@
 #include<iostream>
 
 using std::cout;		using std::cin;
-int main() {
+int main1001() {
 	int A, B;
 	cin >> A >> B;
 	
