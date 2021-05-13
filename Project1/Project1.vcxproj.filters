@@ -13,15 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\Studying">
+      <UniqueIdentifier>{c8f5beb5-043d-4fca-8eb1-187ec11bada6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Baekjoon1001.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="study01.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="study02.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Baekjoon1110.cpp">
@@ -44,6 +41,21 @@
     </ClCompile>
     <ClCompile Include="Baekjoon2588.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Beakjoon12865.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Baekjoon1002.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="study01.cpp">
+      <Filter>소스 파일\Studying</Filter>
+    </ClCompile>
+    <ClCompile Include="study02.cpp">
+      <Filter>소스 파일\Studying</Filter>
+    </ClCompile>
+    <ClCompile Include="Getline_blank.cpp">
+      <Filter>소스 파일\Studying</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

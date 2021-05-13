@@ -140,12 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Baekjoon1001.cpp" />
+    <ClCompile Include="Baekjoon1002.cpp" />
     <ClCompile Include="Baekjoon1008.cpp" />
     <ClCompile Include="Baekjoon10171.cpp" />
     <ClCompile Include="Baekjoon10172.cpp" />
     <ClCompile Include="Baekjoon10430.cpp" />
     <ClCompile Include="Baekjoon10869.cpp" />
     <ClCompile Include="Baekjoon2588.cpp" />
+    <ClCompile Include="Beakjoon12865.cpp" />
+    <ClCompile Include="Getline_blank.cpp" />
     <ClCompile Include="study01.cpp" />
     <ClCompile Include="study02.cpp" />
     <ClCompile Include="Baekjoon1110.cpp" />

@@ -3,7 +3,7 @@
 
 using std::cout;	using std::cin;	using std::endl;
 
-int main() {
+int main2588() {
 	int a, b;
 	cin >> a;
 	cin >> b;
