@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int main_Getline() {
 
 	string str;
 
@@ -18,11 +18,15 @@ int main() {
 	cout << aa[0];
 
 
-	int N;
+	int N;				//공백 구분 숫자 입력받기
 	int a[100];
+	
+	cin >> N;
 	for (int i = 0; i < N; i++) {
 
 		cin >> a[i];
 
 	}
+
+	return 0;
 }

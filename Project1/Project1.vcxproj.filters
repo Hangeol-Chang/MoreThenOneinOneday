@@ -57,5 +57,11 @@
     <ClCompile Include="Getline_blank.cpp">
       <Filter>소스 파일\Studying</Filter>
     </ClCompile>
+    <ClCompile Include="Baekjoon10952.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Beakjoon10951.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
