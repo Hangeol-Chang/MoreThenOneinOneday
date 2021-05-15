@@ -17,7 +17,7 @@ int tag(int a) {
 }
 
 int index;
-int main() {
+int main4673() {
 	for (int i = 1; i < 10001; i++) {
 		index = tag(i);
 
