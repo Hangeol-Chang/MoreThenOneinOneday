@@ -1,32 +1,12 @@
-#include<iostream>
-#include<string>
+#include <vector>
 
 using namespace std;
 
-int main_Getline() {
+long long sum(vector<int>& a) {
+	long long ans = 0;
 
-	string str;
+	for (vector<int>::iterator iter = a.begin(); iter < a.end(); iter++)
+		ans += *iter;
 
-	getline(cin, str);
-	
-	cout << str << '\n';
-
-	char aa[100];
-	cin.getline(aa, 100);
-	
-	cout << '\n' << aa << '\n';
-	cout << aa[0];
-
-
-	int N;				//공백 구분 숫자 입력받기
-	int a[100];
-	
-	cin >> N;
-	for (int i = 0; i < N; i++) {
-
-		cin >> a[i];
-
-	}
-
-	return 0;
+	return ans;
 }

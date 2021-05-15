@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main() {
+int main10951() {
 	int a, b;
 
 	while (cin >> a >> b) {

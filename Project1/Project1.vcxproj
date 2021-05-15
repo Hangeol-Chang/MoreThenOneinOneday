@@ -148,9 +148,12 @@
     <ClCompile Include="Baekjoon10869.cpp" />
     <ClCompile Include="Baekjoon10952.cpp" />
     <ClCompile Include="Baekjoon2588.cpp" />
+    <ClCompile Include="Baekjoon4673.cpp" />
     <ClCompile Include="Beakjoon10951.cpp" />
     <ClCompile Include="Beakjoon12865.cpp" />
     <ClCompile Include="Getline_blank.cpp" />
+    <ClCompile Include="iter.cpp" />
+    <ClCompile Include="pointer.cpp" />
     <ClCompile Include="study01.cpp" />
     <ClCompile Include="study02.cpp" />
     <ClCompile Include="Baekjoon1110.cpp" />
