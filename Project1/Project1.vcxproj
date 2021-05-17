@@ -147,6 +147,7 @@
     <ClCompile Include="Baekjoon10430.cpp" />
     <ClCompile Include="Baekjoon10869.cpp" />
     <ClCompile Include="Baekjoon10952.cpp" />
+    <ClCompile Include="Baekjoon21734.cpp" />
     <ClCompile Include="Baekjoon2588.cpp" />
     <ClCompile Include="Baekjoon4673.cpp" />
     <ClCompile Include="Beakjoon10951.cpp" />
@@ -157,7 +158,6 @@
     <ClCompile Include="study01.cpp" />
     <ClCompile Include="study02.cpp" />
     <ClCompile Include="Baekjoon1110.cpp" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
