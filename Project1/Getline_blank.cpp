@@ -1,12 +1,32 @@
-#include <vector>
+﻿#include<iostream>
+#include<string>
+
 
 using namespace std;
+int Getline() {
 
-long long sum(vector<int>& a) {
-	long long ans = 0;
+	string str;
 
-	for (vector<int>::iterator iter = a.begin(); iter < a.end(); iter++)
-		ans += *iter;
+	getline(cin, str);
 
-	return ans;
+	cout << str << '\n';
+
+	char aa[100];
+	cin.getline(aa, 100);
+
+	cout << '\n' << aa << '\n';
+	cout << aa[0];
+
+
+	int N;		
+	int a[100];
+
+	cin >> N;
+	for (int i = 0; i < N; i++) {
+
+		cin >> a[i];
+
+	}
+
+	return 0;
 }
