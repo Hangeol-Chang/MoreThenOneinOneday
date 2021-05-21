@@ -1,34 +1,30 @@
 ﻿#include<iostream>
 
 using namespace std;
-int c0 = 0, c1 = 0;
 
-int fibonacci(int n) {
-    if (n == 0) {
-        c0++;
-        return 0;
+long long fia[50] = { 0,1, };
+
+long long fibonacci(int n) {
+    if (n == 0 || n == 1) {
+        return fia[n];
     }
-    else if (n == 1) {
-        c1++;
-        return 1;
+    else if (fia[n] == 0) {
+        fia[n] = fibonacci(n - 1) + fibonacci(n - 2);
     }
-    else {
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
+    return fia[n];
 }
 
 int main() {
     int T;
-
     cin >> T;
 
     int num;
     for (int i = 0; i < T; i++) {
         cin >> num;
-        c0 = 0; c1 = 0;
 
-        fibonacci(num);
-        cout << c0 << ' ' << c1;
-        cout << '\n';
+        if (num == 0) cout << 1 << ' ' << 0 << '\n';
+        else {
+            cout << fibonacci(num - 1) << ' ' << fibonacci(num) << '\n';
+        }
     }
 }
