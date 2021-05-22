@@ -14,7 +14,7 @@ long long fibonacci(int n) {
     return fia[n];
 }
 
-int main() {
+int main1003() {
     int T;
     cin >> T;
 
@@ -27,4 +27,5 @@ int main() {
             cout << fibonacci(num - 1) << ' ' << fibonacci(num) << '\n';
         }
     }
+    return 0;
 }
