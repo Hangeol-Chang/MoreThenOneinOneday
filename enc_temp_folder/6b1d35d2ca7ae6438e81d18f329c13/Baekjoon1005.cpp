@@ -10,6 +10,7 @@ int N;
 
 int timecount(int dir) {
 	int tmp = 0;
+	if (maxtim[dir] != -1) return maxtim[dir];
 
 	for (int i = 1; i < N + 1; i++) {
 		if (rel[i][dir] == 1) {
@@ -47,8 +48,7 @@ int main() {
 			rel[x][y] = 1;
 		}
 		cin >> W;
-		
-		timecount(W);
+
 		cout << maxtim[W] << endl;
 	}
 }
