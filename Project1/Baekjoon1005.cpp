@@ -22,7 +22,7 @@ int timecount(int dir) {
 	return maxtim[dir];
 }
 
-int main() {
+int main1005() {
 
 	int T;
 	cin >> T;
@@ -51,4 +51,6 @@ int main() {
 		timecount(W);
 		cout << maxtim[W] << endl;
 	}
+
+	return 0;
 }
