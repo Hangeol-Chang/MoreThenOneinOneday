@@ -84,7 +84,7 @@
     <ClCompile Include="Baekjoon1005.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Baekjoon1006.cpp">
+    <ClCompile Include="Baekjoon13458.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
