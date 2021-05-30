@@ -3,7 +3,7 @@
 #include<cmath>
 
 using namespace std;
-int main() {
+int main13458() {
 	int N;
 	cin >> N;
 	
@@ -26,4 +26,6 @@ int main() {
 		sum += a[i];
 	}
 	cout << sum;
+
+	return 0;
 }
