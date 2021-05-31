@@ -3,7 +3,7 @@
 #include<vector>
 
 using namespace std;
-int main() {
+int main1009() {
 	int T;
 	cin >> T; 
 	
@@ -31,5 +31,7 @@ int main() {
 		re = b % t.size();
 
 		cout << (t[re] != 0 ? t[re] : 10)  << endl;
+		
 	}
+	return 0;
 }
