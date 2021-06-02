@@ -3,7 +3,7 @@ using namespace std;
 
 long long num[1000001];
 
-int main() {
+int main1016() {
 	long long min, max;
 	cin >> min >> max;
 
@@ -23,4 +23,6 @@ int main() {
 		if (num[i] == 0) cnt++;
 	}
 	cout << cnt << endl;
+
+	return 0;
 }
