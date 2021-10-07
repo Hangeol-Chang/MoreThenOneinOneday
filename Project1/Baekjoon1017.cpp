@@ -23,7 +23,7 @@ bool dfs(int a) {
 	return false;
 }
 
-int main() {
+int main1017() {
 	int N;
 	cin >> N;
 	vector<int> n1, n2;
