@@ -117,8 +117,6 @@ print("name으로 내림차순 정렬 후 ==>")
 for student in sorted(students, key = lambda x: x.name, reverse=True):
     print(student)
 
-'''
-#
 
 class Student :
     def __init__(self, name):
@@ -139,4 +137,11 @@ a = Student("홍길동")
 b = GraduateStudent("이순신", "컴퓨터")
 
 print(a)
+print(b)
+
+'''
+#
+
+a = 3
+b = int(3.123)
 print(b)
