@@ -11,8 +11,8 @@ public class BJ2884 {
 
         System.out.println(hm[0] + "//" + hm[1]);
         
-        int hhm = Integer.hm[0].split(" ");
-        int mmh = Integer.hm[1].split(" ");
+        int hhm = Integer.parseInt(hm[0]);
+        int mmh = Integer.parseInt(hm[1]);
         
     }
 }
