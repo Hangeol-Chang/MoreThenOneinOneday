@@ -20,5 +20,6 @@ public class BJ8958 {
             }
             System.out.println(score);
         }
+        in.close();
     }
 }
