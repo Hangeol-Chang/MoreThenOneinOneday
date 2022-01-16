@@ -36,9 +36,18 @@ public class BJ1018 {
                 }
             }
         }
-
         int min = 64;
+        
+        for(int i = 0; i < n - 7; i++){
+            for(int j = 0; j < m - 7; j++){
+                int tmp_sum = 0;
+                for (int y = 0; y < 8 ; y++)
+                    for(int x = 0; x < 8; x++)
+                        tmp_sum += chess[i+x][j+y];
 
+                if(tmp_sum < min) min = tmp_sum;
+            }
+        }
     }
 }
 
