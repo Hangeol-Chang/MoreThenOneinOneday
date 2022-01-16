@@ -1,3 +1,5 @@
+//다른 방법으로 풀어보기!!!!!
+
 import java.util.Scanner;
 
 public class BJ1018 {
@@ -48,11 +50,31 @@ public class BJ1018 {
                 if(tmp_sum < min) min = tmp_sum;
             }
         }
+                //0,0을 B로 해서 계산
+        for(int i = 0; i < n ; i++){
+            for(int j = 0; j < m; j++){
+                switch ((i + j) % 2) {
+                    case 0:
+                        if(chess_c[i][j] == 'B') chess[i][j] = 0;
+                        else                     chess[i][j] = 1;
+                        break;
+                    case 1:
+                        if(chess_c[i][j] == 'W') chess[i][j] = 0;
+                        else                     chess[i][j] = 1;
+                        break;
+                }
+            }
+        }                
+        for(int i = 0; i < n - 7; i++){
+            for(int j = 0; j < m - 7; j++){
+                int tmp_sum = 0;
+                for (int y = 0; y < 8 ; y++)
+                    for(int x = 0; x < 8; x++)
+                        tmp_sum += chess[i+x][j+y];
+        
+                if(tmp_sum < min) min = tmp_sum;
+            }
+        }
+        System.out.println(min);
     }
 }
-
-/*
-[0,0][0,1][0,2][0,3]
-[1,0][1,1][1,2][1,3]
-행열 수 합 홀짝으로 구분
-*/
