@@ -5,12 +5,12 @@ public class BJ1654 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
 
-        int n = in.nextInt();
+        int k = in.nextInt();
         int goalnum = in.nextInt();
         int sum = 0;
-        int[] lan = new int[n];
+        int[] lan = new int[k];
 
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i < k; i++){
             lan[i] = in.nextInt();
             sum += lan[i];
         }
@@ -27,7 +27,7 @@ public class BJ1654 {
         while(true){
             //System.out.println(lanlength);
 
-            lannum = lannumcalc(n, lanlength, lan);
+            lannum = lannumcalc(k, lanlength, lan);
 
             if(lannum > goalnum) {
                 min = lanlength;
@@ -42,18 +42,16 @@ public class BJ1654 {
         lanlength = max;
         do {
             lanlength--;
-            lannum = lannumcalc(n, lanlength, lan);
+            lannum = lannumcalc(k, lanlength, lan);
             //System.out.println(lannum + " " + goalnum);
         } while(lannum < goalnum);
 
         System.out.println(lanlength);
     }
 
-    public static int lannumcalc(int n, int lanlength, int[] lan){
+    public static int lannumcalc(int k, int lanlength, int[] lan){
         int lannum = 0;
-        for(int i = 0; i < n; i++){
-            lannum += lan[i] / lanlength;
-        }
+        for(int i = 0; i < k; i++) lannum += lan[i] / lanlength; 
         return lannum;
     }
 }
