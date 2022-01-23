@@ -1,52 +1,39 @@
 //시간 초과
+//틀렸습니다.
 
 import java.util.Scanner;
+
 public class BJ1654 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
 
         int k = in.nextInt();
         int goalnum = in.nextInt();
-        int sum = 0;
         int[] lan = new int[k];
 
-        for(int i = 0; i < k; i++){
+        lan[0] = in.nextInt();
+        int max = lan[0];
+        int min = 0;
+        for(int i = 1; i < k; i++){
             lan[i] = in.nextInt();
-            sum += lan[i];
+            if(lan[i] > max) max = lan[i];
         }
         in.close();
-
-        //System.out.println(sum);
-        //System.out.println();
-
-        int lanlength = sum / goalnum;
-        int max = lanlength;
-        int min = 0;
+        
         int lannum = 0;
-
+        int lanlength = (min + max) / 2;
         while(true){
-            //System.out.println(lanlength);
-
             lannum = lannumcalc(k, lanlength, lan);
-
-            if(lannum > goalnum) {
+            
+            if(lannum >= goalnum){
                 min = lanlength;
-                lanlength += (max - lanlength)/2;
-            } else if(lannum < goalnum) {
-                max = lanlength;
-                lanlength -= (lanlength - min)/2;
-            } else {
-                break;
-            }
-        }
-        lanlength = max;
-        do {
-            lanlength--;
-            lannum = lannumcalc(k, lanlength, lan);
-            //System.out.println(lannum + " " + goalnum);
-        } while(lannum < goalnum);
+            }else max = lanlength;
 
-        System.out.println(lanlength);
+            //System.out.println(min + " " + max + " " + lanlength);
+            lanlength = (min + max) / 2;
+            if(max - min <=1) break;
+        }
+        System.out.println((lannumcalc(k, lanlength + 1, lan) == goalnum) ? ++lanlength : lanlength);
     }
 
     public static int lannumcalc(int k, int lanlength, int[] lan){
