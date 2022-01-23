@@ -22,7 +22,7 @@ public class BJ1654 {
         
         int lannum = 0;
         int lanlength = (min + max) / 2;
-        while(min + 1 < max){
+        while(min +1 < max){
             lannum = lannumcalc(k, lanlength, lan);
             
             if(lannum >= goalnum){
@@ -30,13 +30,17 @@ public class BJ1654 {
             }else max = lanlength;
 
             //System.out.println(min + " " + max + " " + lanlength);
-            lanlength = (min + max) / 2;
+            lanlength = ((min + max) / 2) == 0 ? 1: (min + max) / 2;
 
-            //0.5가 버려지는 것 때문에, 넘겨지는 수가 발생함.
-            //아닌가 딴건가...
         }
-        System.out.println((lannumcalc(k, lanlength + 2, lan) == goalnum) ? lanlength + 2 : (lannumcalc(k, lanlength + 1, lan) == goalnum) ? lanlength + 1 : lanlength);
+        while (lannumcalc(k, min, lan) == goalnum){
+            //System.out.println(min);
+            min++;
+        }
+        System.out.println(--min);
+        
     }
+    
 
     public static int lannumcalc(int k, int lanlength, int[] lan){
         int lannum = 0;
