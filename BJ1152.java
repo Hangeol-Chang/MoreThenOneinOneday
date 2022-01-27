@@ -5,6 +5,7 @@ public class BJ1152 {
         Scanner in = new Scanner(System.in);
 
         String[] wor = in.nextLine().split(" ");
+        
         int len = wor.length;
         if(len > 0) if(wor[0] == "") len--;
         System.out.println(len);
