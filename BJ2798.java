@@ -19,7 +19,7 @@ public class BJ2798 {
                 }
             }
         }
-        System.out.println();
+        //System.out.println();
     }
 
     public static void main(String[] args){
@@ -27,10 +27,16 @@ public class BJ2798 {
 
         n = in.nextInt();
         goal = in.nextInt();            //static으로 선언한 goal에 불러옴.
-
         in.nextLine();                  //버퍼 비우기
 
-        nums = Stream.of(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        //하나씩 받기   < 이게 아주 미세하게 빠름.
+        nums = new int[n];
+        for(int i = 0; i < n; i++){
+            nums[i] = in.nextInt();
+        }
+        
+        //한번에 받기
+        //nums = Stream.of(in.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         in.close();
         
         calcmax(0,0,0);

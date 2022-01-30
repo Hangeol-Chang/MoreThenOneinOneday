@@ -1,4 +1,3 @@
-/*
 import java.util.Scanner;
 public class BJ1929 {
     public static boolean primejudge(int num){
@@ -28,4 +27,3 @@ public class BJ1929 {
     }
     
 }
-*/
