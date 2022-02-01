@@ -1,42 +1,46 @@
 //시간초과
-//병합 정렬 사용할 것.
+//병합 정렬 써도 시간...초과네?
 
 import java.util.Scanner;
 
 public class BJ2751 {
-    public static void sort(int[] data, int l, int r){
-        int left = l;
-        int right = r;
-        int pivot = data[(l+r)/2];
-        
-        do{
-            while(data[left] < pivot) left++;
-            while(data[right] > pivot) right--;
-            if(left <= right){    
-                int temp = data[left];
-                data[left] = data[right];
-                data[right] = temp;
-                left++;
-                right--;
-            }
-        }while (left <= right);
-        
-        if(l < right) sort(data, l, right);
-        if(r > left) sort(data, left, r);
-    }
+    static int[] data;
+    static int[] tmp;
 
+    public static void mergesort(int start, int end){
+        if(start < end){
+            int mid = (start + end) / 2;
+            mergesort(start, mid);
+            mergesort(mid+1, end);
+
+            int p = start;
+            int q = mid + 1;
+            int index = start;
+
+            while( p <= mid || q <= end ) {
+                if( q > end || (p <= mid && data[p] < data[q])){ tmp[index++] = data[p++]; }
+                else                                           { tmp[index++] = data[q++]; }
+            }
+            //for(int i = 0; i <= end; i++) System.out.print(tmp[i] + " ");
+            //System.out.println();
+
+            for(int i = start; i <= end; i++){ data[i] = tmp[i]; }
+        }  
+    }
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
         
         int n = in.nextInt();
-        int[] data = new int[n];
+        data = new int[n];
+        tmp = new int[n];
 
-        for(int i = 0; i < n; i++){
-            data[i] = in.nextInt();
-        }
+        for(int i = 0; i < n; i++){ data[i] = in.nextInt(); }
         in.close();
-        sort(data, 0, data.length - 1);
 
-        for(int i  = 0; i < n; i++) System.out.println(data[i]);
+        mergesort(0, n-1);
+
+        for(int i : data) sb.append(i).append('\n');
+        System.out.println(sb);
     }
 }
