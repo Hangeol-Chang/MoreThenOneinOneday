@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.stream.Stream;
 public class BJ2798 {
     public static int maxnum = 0;
     public static int goal = 0;

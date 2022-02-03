@@ -8,6 +8,7 @@ public class BJ1373 {
         int l = n.length();
         int l2 = (l + 2) / 3;
         int[] num = new int[l2];
+
         //* Math.pow(10, (l-1 -i)/3)
 
         for(int i = l-1; i >= 0; i--){

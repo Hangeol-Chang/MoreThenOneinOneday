@@ -1,4 +1,4 @@
-//수열 합으로도 풀 수 있을듯.
+//수열 합으로도 푼 것.
 import java.util.Scanner;
 public class BJ2921_2 {
     public static void main(String[] args){

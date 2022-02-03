@@ -8,9 +8,15 @@ public class BJ2839 {
         //수를 5로 나눈 수
         int n = (num % 5) ;
 
-        int c3 = 0;
-        int c5 = 0;
-
+        int c3 = 0;         //3kg의 갯수
+        int c5 = 0;         //5kg의 갯수
+        /*
+        5 1  >  3 2
+        5 2  >  3 4
+        5 3  >  3 3
+        5 4  >  3 3
+        5 0  >  0 
+        */
         switch (n) {
             case 1:
                 c3 = 2;

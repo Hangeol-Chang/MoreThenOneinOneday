@@ -14,8 +14,8 @@ public class BJ2810 {
             if(seats.charAt(i) == 'L') count++;
         }
         count /= 2;
+
         int seat = n + 1 - count;
         System.out.println(seat > n ? n : seat);
     }
-    
 }

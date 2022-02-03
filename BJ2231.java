@@ -6,7 +6,7 @@ public class BJ2231 {
         int n = in.nextInt();
         in.close();
         int num = (int)Math.pow(10, Integer.toString(n).length()-2);
-        
+
         while (true){
             int sum = num;
             int calc  = num;
