@@ -29,7 +29,7 @@ public class BJ3226 {
                     pay += (m2-60) * 5;
                 }
             }
-            System.out.println(pay);
+            //System.out.println(pay);
         }
         System.out.println(pay);
     }
