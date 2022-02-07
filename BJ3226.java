@@ -14,12 +14,24 @@ public class BJ3226 {
             int[] hmd = Stream.of(in.readLine().split(" |:")).mapToInt(Integer::parseInt).toArray();
             
             pay += hmd[2]*5;
-            if (hmd[1] + hmd[2] > 60){
-                
+            if(hmd[0] % 19 >= 7){
+                pay += hmd[2]*5;
+
+                int m2 = hmd[1] + hmd[2];
+
+                if (m2 > 60 && hmd[0] == 18){
+                    pay -= (m2-60) * 5;
+                }
+            }else{
+                int m2 = hmd[1] + hmd[2];
+
+                if (m2 > 60 && hmd[0] == 6){
+                    pay += (m2-60) * 5;
+                }
             }
-            
+            System.out.println(pay);
         }
-        
+        System.out.println(pay);
     }
 }
 /*
