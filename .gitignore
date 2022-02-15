@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/.metadata/
+
+
+## secret폴더 무시
+.secret/
