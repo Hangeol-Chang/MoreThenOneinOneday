@@ -2,7 +2,6 @@
 1 2 2 3 3 3 4 4 4 4 5 5 5 5 5
 1 3 6 10 15
 */
-
 import java.util.Scanner;
 public class bj1292 {
     public static void main(String[] args){
