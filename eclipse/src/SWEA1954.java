@@ -5,7 +5,6 @@ public class SWEA1954 {
 		Scanner in = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		
-		
 		int T = in.nextInt();
 		
 		
@@ -30,8 +29,8 @@ public class SWEA1954 {
 				
 				//mod 올릴지 말지 결정
 				if((col + dc[mod]) >= n || (row + dr[mod]) >= n || 
-						(col + dc[mod]) < 0 || (row + dr[mod]) < 0 || 
-						board[col+dc[mod]][row+dr[mod]] !=0 ) 
+				   (col + dc[mod]) < 0 || (row + dr[mod]) < 0 || 
+					board[col+dc[mod]][row+dr[mod]] !=0 )
 					mod = (mod+1)%4;
 			
 				//보드 위치 선정
