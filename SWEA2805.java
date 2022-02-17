@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-public class BJ2805 {
+public class SWEA2805 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         StringBuilder sb = new StringBuilder();
@@ -19,6 +19,8 @@ public class BJ2805 {
                 farm[i] = Stream.of(in.nextLine().split("")).mapToInt(Integer::parseInt).toArray();
             }
 
+            //1차함수 4개를 잡고,
+            //그 범위 안에 들어오는 것을 다 더함.
             int sum = 0;
             for(int y = 0; y < n; y++){
                 for(int x = 0; x < n; x++){
