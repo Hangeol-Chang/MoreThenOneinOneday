@@ -8,6 +8,7 @@ public class BJ2669_직사각형네개의합집합의면적구하기 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		//입력 다 받고 시작.
+		//입력을 받으면서, 칠해야 할 최대 위치가 어딘지 판단.
 		int maxx = 0, maxy = 0;
 		int[][][] boxes = new int[2][2][4];
 		for(int i = 0; i < 4; i++) {
@@ -30,6 +31,7 @@ public class BJ2669_직사각형네개의합집합의면적구하기 {
 		
 		//보드를 불리언으로 선언.
 		//칠해지면 true로 바꾸고, 넓이에 1을 더하는 방식.
+		//앞에서 구한 최대 위치만큼만 배열을 선언.
 		boolean[][] board = new boolean[maxx][maxy];
 		int nerbi = 0; //넓이
 		for(int i = 0; i < 4; i++) {
