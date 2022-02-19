@@ -17,5 +17,39 @@ public class BJ2635_수이어가기 {
 		Scanner in = new Scanner(System.in);
 		
 		int n = in.nextInt();
+		in.close();
+		
+		int a = 0;
+
+		int savea = 0;
+		int saveb = 0;
+		int maxcount = 0;
+		
+		int startc = n/2 + 1;
+		while(startc <= 3*n/4 + 1) {
+			int b = n;
+			int c = startc++;
+			int count = 1;
+			while(c >= 0) {
+				a = b;
+				b = c;
+				count++;
+				c = a - b;
+				//System.out.println("a : " + a + ", b : " + b + ", c : " + c + ", count : " + count);
+			}
+			if(maxcount < count) {
+				savea = a;
+				saveb = b;
+				maxcount = count;
+			}
+			b++;
+		}
+		
+		int[] nums = new int[maxcount];
+		nums[maxcount-1] = saveb;
+		nums[maxcount-2] = savea;
+		for(int i = maxcount-3; i >= 0; i--) nums[i] = nums[i+1] + nums[i+2];
+		System.out.println(maxcount);
+		for(int i = 0; i < maxcount; i++) System.out.print(nums[i] + " ");
 	}
 }
