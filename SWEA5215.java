@@ -28,6 +28,7 @@ public class SWEA5215 {
             sb.append(pmax + "\n");
         }
         System.out.println(sb);
+        in.close();
     }
 
     public static void powerset(int index, int psum, int lsum, int[][] foods){
