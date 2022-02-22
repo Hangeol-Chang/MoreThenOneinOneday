@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BJ2164 {
+public class BJ2164_카드2 {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
