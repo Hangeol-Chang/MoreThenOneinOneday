@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class 마이쮸 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		StringBuilder sb = new StringBuilder();
 		Queue<Integer> que = new LinkedList<>();
 		
 		int[] arr = new int[20];
@@ -22,5 +21,6 @@ public class 마이쮸 {
 			i++;
 		}
 		System.out.println(pop);
+		in.close();
 	}
 }

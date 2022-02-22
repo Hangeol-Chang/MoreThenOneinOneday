@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
-public class BJ1244 {
+public class BJ1244_스위치 {
     public static void main(String[] args) throws NumberFormatException, IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -28,6 +28,7 @@ public class BJ1244 {
                     }
                     break;
                 case 2:
+                    //인덱스에러 고려 안해놨네?
                     int d = 0;
                     while(btns[index-1 -d] == btns[index-1 +d]){
                         int tmp = btns[index-1 +d];

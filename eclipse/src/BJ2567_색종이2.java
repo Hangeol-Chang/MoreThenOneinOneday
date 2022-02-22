@@ -1,7 +1,7 @@
 //1에서 0으로 바뀔 때, 0에서 1로 바뀔 때
 import java.util.Scanner;
 
-public class BJ2563_색종이2 {
+public class BJ2567_색종이2 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		
@@ -27,5 +27,6 @@ public class BJ2563_색종이2 {
 			}
 		}
 		System.out.println(rounder);
+		in.close();
 	}
 }

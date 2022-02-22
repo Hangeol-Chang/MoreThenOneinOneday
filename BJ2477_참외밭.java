@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class BJ2477{
+public class BJ2477_참외밭{
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int density = in.nextInt();
