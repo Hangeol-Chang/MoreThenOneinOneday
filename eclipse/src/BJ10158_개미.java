@@ -10,31 +10,28 @@ public class BJ10158_개미 {
         int W = Integer.parseInt(st.nextToken());
         int H = Integer.parseInt(st.nextToken());
 
-        int dr = 1;
-        int dc = 1;
-
         //상하에 닿을 때, 좌우에 닿을 때로 구분.
         st = new StringTokenizer(br.readLine());
         int x = Integer.parseInt(st.nextToken());
         int y = Integer.parseInt(st.nextToken());
         int hour = Integer.parseInt(br.readLine());
 
-        int nr = y;
-        int nc = x;
-        for(int h = 0; h < hour; h++){
-            nr += dr;
-            nc += dc;
+        
+        //위에가 홀수면 0에서 시작, 짝수면 
+        if(hour > (W-x)){
+            int xtmp = (hour-(W-x));
+            if (xtmp/W %2 == 0) x = W - xtmp%W;
+            else                x = xtmp%W;
+        }else x += hour;
+        
+        if(hour > (H-y)){
+            int ytmp = (hour-(H-y));
+            if (ytmp/H %2 == 0) y = H - ytmp%H;
+            else                y = ytmp%H;
+        }else y += hour;
 
-            if(nc < 0 || nc > W) {
-                dc = -dc;
-                nc += 2*dc;
-            }
-            if(nr < 0 || nr > H) {
-                dr = -dr;
-                nr += 2*dr;
-            }
-            //System.out.println(nc + " " + nr);
-        }
-        System.out.println(nc + " " + nr);
+        System.out.println(x + " " + y);
     }
+
+    
 }
