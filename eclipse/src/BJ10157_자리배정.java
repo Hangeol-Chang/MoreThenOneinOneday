@@ -39,7 +39,7 @@ public class BJ10157_자리배정 {
                 }
                 count += Y--;
             }
-            System.out.println("mod : " + mod + ", x/y : " + x + " " + y + ", count : " + count);
+            //System.out.println("mod : " + mod + ", x/y : " + x + " " + y + ", count : " + count);
             mod++;
             if(mod > 4) mod -= 4;
         }
