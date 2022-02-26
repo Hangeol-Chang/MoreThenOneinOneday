@@ -16,25 +16,32 @@ public class BJ2491_수열 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         nums = new int[n-1];
 
+        //nums공간에 앞뒤 수의 차를 저장.
         int a = Integer.parseInt(st.nextToken());
-
-        int conti = 0;
-        for(int i = 0; i < n-2; i++){
-            for(int dir = -1; dir <= 1; dir += 2){
-                //dir을 어떻게 계산해야 하나.
-                //i번째는 세고 넘어감.
-                conti = Math.max(conti, ing(i, 1, dir));
-            }
+        int b = 0;
+        for(int i = 0; i < n-1; i++){
+            b = Integer.parseInt(st.nextToken());
+            nums[i] = (b - a) < 0 ? -1 : (b-a) > 0 ? 1 : 0;
+            a = b;
         }
-        System.out.println(conti);
-    }
 
-    public static int ing(int idx, int count, int dir){
-        //인덱스를 벗어나면 리턴.
-        if(idx+1 >= n) return count;
-        if((dir < 0 && nums[idx+1] - nums[idx] <= 0) || (dir > 0 && nums[idx+1] - nums[idx] >= 0))
-            return ing(idx+1, count+1, dir); 
-        else
-            return count;
+        //증가최댓값 검사
+        int start  = 0;
+        int count = 1;
+        while( start < n-1 ){
+            int i = start;
+            while(i < n-1 && nums[i] >= 0){ i++; }
+            count = Math.max(count, i - start + 1);
+            start = ++i;
+        }
+        //감소최댓값 검사.
+        start = 0;
+        while( start < n-1 ){
+            int i = start;
+            while(i < n-1 && nums[i] <= 0){ i++; }
+            count = Math.max(count, i - start + 1);
+            start = ++i;
+        }
+        System.out.println(count);
     }
 }
