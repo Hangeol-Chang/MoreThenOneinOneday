@@ -1,3 +1,4 @@
+package ChangHangeol;
 import java.util.Scanner;
 
 public class SWEA7102_준홍이의카드놀이 {

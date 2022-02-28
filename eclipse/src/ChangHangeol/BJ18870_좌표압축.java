@@ -1,3 +1,4 @@
+package ChangHangeol;
 public class BJ18870_좌표압축 {
     public static void main(String[] args){
         //제일 작은걸 0으로 잡고,

@@ -1,3 +1,4 @@
+package ChangHangeol;
 import java.util.Scanner;
 
 public class SWEA5215_햄버거다이어트 {

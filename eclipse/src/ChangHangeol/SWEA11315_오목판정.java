@@ -1,3 +1,4 @@
+package ChangHangeol;
 import java.util.Scanner;
 
 public class SWEA11315_오목판정 {

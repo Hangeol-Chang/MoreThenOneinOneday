@@ -1,3 +1,4 @@
+package ChangHangeol;
 // import java.util.Scanner;
 
 //언젠가는 풀어보리

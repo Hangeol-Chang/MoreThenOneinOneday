@@ -1,3 +1,4 @@
+package ChangHangeol;
 import java.util.Scanner;
 
 public class BJ제1회블롭컵_blobfearful {

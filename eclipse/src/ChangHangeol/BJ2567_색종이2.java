@@ -1,3 +1,4 @@
+package ChangHangeol;
 //1에서 0으로 바뀔 때, 0에서 1로 바뀔 때
 import java.util.Scanner;
 

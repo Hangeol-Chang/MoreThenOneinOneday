@@ -1,3 +1,4 @@
+package ChangHangeol;
 import java.util.Scanner;
 
 public class SWEA7087_문제제목붙이기 {

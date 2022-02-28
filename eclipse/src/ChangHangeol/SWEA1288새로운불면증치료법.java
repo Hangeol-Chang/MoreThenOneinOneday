@@ -1,3 +1,4 @@
+package ChangHangeol;
 
 import java.util.Scanner;
 
