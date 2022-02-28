@@ -342,5 +342,5 @@ healthchecksdb
 
 
 ## secret폴더 무시
-.secret/
+eclipse/src/.secret/
 /.recommenders/
