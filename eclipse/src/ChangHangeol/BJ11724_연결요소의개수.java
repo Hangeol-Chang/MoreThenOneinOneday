@@ -42,13 +42,26 @@ public class BJ11724_연결요소의개수 {
 
     public static void erase(int i){
     	visit[i] = true;
-        for(int j = i+1; j <= n; j++){
+        for(int j = 1; j <= n; j++){
             if(grp[i][j] == 1) {
-                grp[i][j] = 0;
-                grp[j][i] = 0;
-                
-                erase(j);
+                if(!visit[j]) erase(j);
             }
         }
     }
 }
+
+/*
+10 4
+1 2
+2 4
+2 5
+2 6
+6
+
+6 2
+3 4
+4 2
+4나와야 됨.
+
+
+*/
