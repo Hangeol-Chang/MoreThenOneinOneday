@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
 public class BJ18870_좌표압축 {
@@ -15,7 +16,12 @@ public class BJ18870_좌표압축 {
     	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
     	
     	int n = Integer.parseInt(br.readLine());
-    	nums = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+    	StringTokenizer st = new StringTokenizer(br.readLine());
+    	nums[0] = Integer.parseInt(st.nextToken());
+    	int min = nums[0];
+    	for(int i = 1; i < n; i++) {
+    		nums[i] = 
+    	}
     	//제일 작은걸 0으로 잡고,
         //쓸 수를 1씩 올려가면서, 찾게 되는 수에 대입.
 
