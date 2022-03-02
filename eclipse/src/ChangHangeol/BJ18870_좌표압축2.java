@@ -1,4 +1,3 @@
-//시간 초과
 package ChangHangeol;
 
 import java.io.BufferedReader;
@@ -7,17 +6,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 import java.util.stream.Stream;
 
-public class BJ18870_좌표압축 {
+public class BJ18870_좌표압축2 {
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		PriorityQueue<Integer> pque = new PriorityQueue<>();
-		ArrayList<Integer> arr = new ArrayList<>();
+		HashMap<Integer, Integer> map = new HashMap<>();
     	
     	int n = Integer.parseInt(br.readLine());
 		int[] nums = new int[n];
@@ -30,12 +30,13 @@ public class BJ18870_좌표압축 {
     	}
 		//우선순위 큐로 정렬된 것을 어레이에 넣음.
 		int poll = pque.poll();
-		arr.add(poll);
+		int i = 0;
+		map.put(poll, i++);
 		while(!pque.isEmpty()){
 			int tmp = pque.poll();
 			if(poll != tmp) {
 				poll = tmp;
-				arr.add(poll);
+				map.put(poll, i++);
 			}
 		}
     	//제일 작은걸 0으로 잡고,
@@ -43,7 +44,7 @@ public class BJ18870_좌표압축 {
         //이를 인덱스로 찾아올 수 있게 변환하여~~
 
 		for(int num : nums){
-			bw.write(arr.indexOf(num) + " ");
+			bw.write(map.get(num) + " ");
 		}
 		bw.flush();
     }
