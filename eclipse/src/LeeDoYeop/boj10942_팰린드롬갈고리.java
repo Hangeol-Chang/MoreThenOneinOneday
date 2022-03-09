@@ -19,8 +19,15 @@ public class boj10942_팰린드롬갈고리 {
 			int S = Integer.parseInt(st.nextToken())-1;
 			int E = Integer.parseInt(st.nextToken())-1;
 			int ans = 1;
-			for(int j = 0; j<=(E-S)/2; j++) {
-				
+			while(S <= E) {
+				if(num[S] == num[E]) {
+					S++;
+					E--;
+				}else {
+					ans = 0;
+					break;
+				}
+					
 			}
 			sb.append(ans).append("\n");
 		}
