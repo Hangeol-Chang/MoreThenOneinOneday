@@ -5,23 +5,25 @@ package ChangHangeol;
  * start위치에서 함수를 타고 들어가면서, 그 위치부터 출력해 나오기.
  * 스택 오버플로 날듯.
  * 
+ * n이 일
  * 
  */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class BJ1055_끝이없음2 {
 	static StringBuilder sb = new StringBuilder();
 	static int st, ed;
 	static String S = "";
-	static int[] lengths;
+	static ArrayList<Long> lengths = new ArrayList<>();
 	
 	static String ref;
 	static int reflen;
 	static int loc = 0;
-	static int limit = 0;
+	static Long limit = 0L;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -41,20 +43,20 @@ public class BJ1055_끝이없음2 {
 		ed = Integer.parseInt(ST.nextToken())+1;
 		
 		// 1번부터 n번까지 실행할 때, 문자열이 몇자리가 되는지 저장.
-		lengths = new int[n+1];
-		lengths[0] = reflen;
+		lengths.add((long) reflen);
 		for(int i = 1; i <= n; i++) {
-			lengths[i] = lengths[i-1]*refcount + Slen;
-			if(lengths[i] >= ed) {
+			lengths.add(lengths.get(i-1)*refcount + Slen);
+//			System.out.println(lengths.get(i));
+			if(lengths.get(i) >= ed) {
 				n = i;
 				break;
 			}
 		}
 		//입력받기 끝.
-		limit = lengths[n];
+		limit = lengths.get(n);
 		
 		printSystem(n);
-		int offset = ed - Math.max(lengths[n], st);
+		int offset = (int) (ed - Math.max(limit, st));
 		if(offset > 0) {
 			for(int i = 1; i < offset; i++) sb.append('-');
 		}
@@ -68,7 +70,7 @@ public class BJ1055_끝이없음2 {
 //			System.out.println(i + " " + n + " " + loc);
 			if(S.charAt(i) == '$') {
 
-				if(loc + lengths[n] >= st) {
+				if(loc + lengths.get(n) >= st) {
 					if(n != 0) {
 						printSystem(n-1);
 					}else {
@@ -78,7 +80,7 @@ public class BJ1055_끝이없음2 {
 //							System.out.println(loc + " " + sb);
 						}
 					}
-				}else loc += lengths[n];
+				}else loc += lengths.get(n);
 			}
 			else {
 				loc += 1;
@@ -97,9 +99,22 @@ $x$y$z$
 10
 30 50
 
+bcyabcxabcyabczabczab
+
+a
+$v
+10
+0 90
+
 a
 $b
 1
 999 1030
+
+a
+$v
+1000000000
+1000000000 1000000099
+
 
 */
