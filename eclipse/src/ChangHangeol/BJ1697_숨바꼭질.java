@@ -6,12 +6,10 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /*
-
-목표 - 나 : 최대 수치
-1 더하고 2곱하고, 이 값을 다시 1을 더하거나 2를 곱하거나 1을 빼는 함수로 재귀시킴.
+스택 오버플로
  */
 
-public class BJ1697 {
+public class BJ1697_숨바꼭질 {
 	static int goal = 0;
 	static int maxcount = 0;
 	
