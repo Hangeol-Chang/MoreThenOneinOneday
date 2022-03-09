@@ -29,8 +29,7 @@ public class BJ1697 {
 	public static int calc(int nownum, int count, int idx) {
 //		System.out.println("지금 수 : " + nownum + ", count : " + count);
 		if(nownum == goal || count >= maxcount) return count;
-		if(nownum < 0) return maxcount;
-		if(nownum - goal > maxcount - count) return maxcount;
+		if(nownum < 0 || nownum > 100000 || nownum - goal > maxcount - count) return maxcount;
 		
 		int t1 = 0;
 		switch(idx) {
