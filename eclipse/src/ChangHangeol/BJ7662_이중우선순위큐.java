@@ -11,7 +11,7 @@ public class BJ7662_이중우선순위큐 {
 			LinkedList<Integer> que = new LinkedList<>();
 			int max = 0;
 			public void add(int num) {
-				
+				//환영합니다 여러분.
 			}
 		}
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
