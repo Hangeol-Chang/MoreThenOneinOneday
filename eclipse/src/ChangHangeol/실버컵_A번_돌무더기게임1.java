@@ -21,7 +21,11 @@ public class 실버컵_A번_돌무더기게임1 {
 			int p2 = que.poll();
 			int p3 = que.poll();
 			
-			if(p1 == p2) { sb.append(((p1 % 2 == 0) ? "R" : "B") + "\n"); }
+			if(p1 == 0) {
+				if(p2 == 0) sb.append("R\n");
+				else sb.append(((p3%2 == 0) ? "R" : "B") + "\n" );
+			}
+			else if(p1 == p2) { sb.append(((p1 % 2 == 0) ? "R" : "B") + "\n"); }
 			else if(p2 == p3) { sb.append(((p2 % 2 == 0) ? "R" : "B") + "\n"); }
 			else { sb.append((((p2-p1)%2 == 0) ? "R" : "B" ) + "\n"); }
 		}
