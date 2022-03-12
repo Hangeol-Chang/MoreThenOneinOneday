@@ -3,8 +3,10 @@ package ChangHangeol;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 /*
  * 0이 두개가 되는 순간 끝.
@@ -16,36 +18,46 @@ public class 실버컵_A번_돌무더기게임1 {
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		for(int t = 1; t <= T; t++) {
-			int[] nums = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			PriorityQueue<Integer> que = new PriorityQueue<>();
+			for(int i = 0; i < 3; i++) {
+				que.add(Integer.parseInt(st.nextToken()));
+			}
 			
 			int count = 0;
-			while(playgame(nums)) {
+			while(playgame(que)) {
+//				System.out.println(que);
 				count++;
 			}
 			sb.append(((count%2 == 0) ? "R" : "B" ) + "\n");
 		}
 		System.out.println(sb);
 	}
-	public static boolean playgame(int[] nums) {
-		Arrays.sort(nums);
-		boolean[] pick = new boolean[3];
+	public static boolean playgame(PriorityQueue<Integer> que) {
+		Queue<Integer> tmpque = new LinkedList<>();
 		
 		int pickcount = 0;
 		for(int i = 0; i < 3; i++) {
-			if(nums[i] != 0) {
-				nums[i]--;
-				pick[i] = true;
-				if(++pickcount == 2) break;
+			int get = que.poll();
+			if(get != 0) {
+				get--;
+				pickcount++;
 			}
-		}
-		if(pickcount == 2) {
-			for(int i = 0; i < 3; i++) {
-				if(pick[i] == false) {
-					nums[i]++;
-					return true;
+			tmpque.add(get);
+			
+			if(pickcount == 2) {
+				if(tmpque.size() == 2) {
+					que.add(que.poll() + 1);
+					while(tmpque.size() > 0) que.add(tmpque.poll());
 				}
+				else {
+					que.add(tmpque.poll() + 1);
+					while(tmpque.size() > 0) que.add(tmpque.poll());
+				}
+				return true;
 			}
 		}
+		// 2개 이상 뽑을 수 없으면 false
 		return false;
 	}
 }
