@@ -16,23 +16,20 @@ public class BJ11053_가장긴증가하는수열 {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		arr = new int[N];
 		maxcount = new int[N];
-		for(int i = 0; i < N; i++) { arr[i] = Integer.parseInt(st.nextToken()); }
+		for(int i = 0; i < N; i++) { 
+			arr[i] = Integer.parseInt(st.nextToken()); 
+			// 나보다 작은 것들 중에 최대
+			int maxtmp = 0;
+			for(int j = 0; j <= i; j++) {
+				if(arr[j] < arr[i]) {
+					maxtmp = Math.max(maxtmp,  maxcount[j]);
+				}
+			}
+			maxcount[i] = maxtmp+1;
+			maxnum = Math.max(maxcount[i], maxnum);
+		}
 		
-		dlfma(0, 0, 0);
 		System.out.println(maxnum);
-	}
-	public static void dlfma(int count, int idx, int saved) {
-		if(idx == N) {
-			maxnum = Math.max(maxnum,  count);
-			return;
-		}
-		// 이걸 가지고 넘어가거나, 안가지고 넘어가거나.
-		if(saved < arr[idx]) {
-			// 가지고 넘어가는 코드
-			dlfma(count+1, idx+1, arr[idx]);
-		}
-		// 안가지고 넘어가는 코드
-		dlfma(count, idx+1, saved);
 	}
 }
 
