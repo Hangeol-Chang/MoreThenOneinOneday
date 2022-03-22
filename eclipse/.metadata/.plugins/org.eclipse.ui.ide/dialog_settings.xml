@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\User\Documents\eclipse\git_testing"/>
 		<item value="C:\Users\82105\Documents\GitHub\MoreThenOneinOneday\eclipse"/>
 	</list>
 	<section name="WORKBENCH_SETTINGS">
