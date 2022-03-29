@@ -5,6 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch SWEA2930힙_규진이형",
+            "request": "launch",
+            "mainClass": "ChangHangeol.SWEA2930힙_규진이형",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch SWEA2930_힙2",
+            "request": "launch",
+            "mainClass": "ChangHangeol.SWEA2930_힙2",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch SWEA_2930_힙_규진이형",
+            "request": "launch",
+            "mainClass": "ChangHangeol.SWEA_2930_힙_규진이형",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch 실버컵_B번_돌무더기게임2",
+            "request": "launch",
+            "mainClass": "ChangHangeol.실버컵_B번_돌무더기게임2",
+            "projectName": "eclipse"
+        },
+        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
