@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ3584_가장가까운공통조상",
+            "request": "launch",
+            "mainClass": "ChangHangeol.BJ3584_가장가까운공통조상",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch SWEA2930힙_규진이형",
             "request": "launch",
             "mainClass": "ChangHangeol.SWEA2930힙_규진이형",

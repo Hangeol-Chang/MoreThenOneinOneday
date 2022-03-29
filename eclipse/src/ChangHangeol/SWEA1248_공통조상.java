@@ -60,6 +60,7 @@ public class SWEA1248_공통조상 {
 		if(tree[node][1] != 0) tmp = finddept(tree[node][1], dept+1, target);
 		return tmp;
 	}
+	
 	// 부모 찾기
 	public static int findparent(int data) {
 		for(int i = 1; i < n+1; i++) {
