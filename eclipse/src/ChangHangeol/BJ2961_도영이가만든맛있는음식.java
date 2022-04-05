@@ -18,7 +18,6 @@ public class BJ2961_도영이가만든맛있는음식 {
 	static int min = Integer.MAX_VALUE;
 	static int N;
 	static node[] data;
-	static boolean[] vi;
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +25,6 @@ public class BJ2961_도영이가만든맛있는음식 {
 		StringTokenizer st;
 		
 		data = new node[N];
-		vi = new boolean[N];
 		for(int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			data[i] = new node(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
@@ -40,12 +38,8 @@ public class BJ2961_도영이가만든맛있는음식 {
 		if(idx > N) return;
 		if(idx > 0) min = Math.min(min, Math.abs(s - ss));
 		
-		for(int i = 0; i < N; i++) {
-			if(vi[i]) continue;
-			vi[i] = true;
-			
-			run(idx+1, s * data[i].s, ss + data[i].ss );
-			vi[i] = false;
+		for(int i = idx; i < N; i++) {
+			run(i+1, s * data[i].s, ss + data[i].ss );
 		}
 	}
 }
