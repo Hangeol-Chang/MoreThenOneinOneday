@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BJ15650_N과M4 {
+public class BJ15652_N과M4 {
 	static StringBuilder sb = new StringBuilder();
 	static int n, m;
 	
