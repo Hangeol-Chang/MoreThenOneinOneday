@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class BJ15654_N과M8 {
+public class BJ15657_N과M8 {
 	static int N, M;
 	static int[] nums;
 	static int limit;
