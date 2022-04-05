@@ -31,4 +31,6 @@ public class BJ1967_트리의지름 {
 		
 		
 	}
+	// 모든 말단 노드들에서 
+	public void 
 }
