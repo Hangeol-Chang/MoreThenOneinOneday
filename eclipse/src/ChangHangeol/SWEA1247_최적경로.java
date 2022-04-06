@@ -44,6 +44,7 @@ public class SWEA1247_최적경로 {
 	}
 	
 	public static void run(int dist, int vi, int count, loc lastvisit) {
+		if(dist > mindist) return;
 		if(count == N) {
 			dist += Math.abs(lastvisit.y - home.y) + Math.abs(lastvisit.x - home.x);
 			mindist = Math.min(dist,  mindist);
