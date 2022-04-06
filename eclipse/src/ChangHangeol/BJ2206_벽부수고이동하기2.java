@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-// 시간초과
+// 다시 풀어볼 것.
 
 // 벽을 부술 수 있으면 그냥 1을 밟아버리기.
 // 무조건 1,1에서 시작
