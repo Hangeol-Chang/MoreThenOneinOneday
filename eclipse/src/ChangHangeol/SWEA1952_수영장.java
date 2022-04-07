@@ -46,7 +46,6 @@ public class SWEA1952_수영장 {
 	public static void run(int count, int sum) {
 		if(sum >= minv) return;
 		if(count <= 0) {
-//			System.out.println("통과 : " + minv + " " + sum);
 			minv = Math.min(sum, minv);
 			return;
 		}
