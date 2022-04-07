@@ -9,8 +9,7 @@ import java.util.StringTokenizer;
 // 한 줄을 통째로 A or B로 바꿀 수 있음.
 public class SWEA2112_보호필름 {
 	static int[] mak;
-	// 0번 인덱스에 다 0인걸 저장, 1번에 다 1인걸 저장.
-	static int maxin;
+	static int maxin;	// 다 1일 때의 비트값.
 	static int D, W, K;
 	static int mind;
 	
@@ -28,6 +27,7 @@ public class SWEA2112_보호필름 {
 			K = Integer.parseInt(st.nextToken());
 			mind = K;
 			
+			// 각 위치에 대해 비트로 더함.
 			mak = new int[D];
 			for(int i = 0; i<D; i++) {
 				st = new StringTokenizer(br.readLine());
@@ -36,7 +36,7 @@ public class SWEA2112_보호필름 {
 						mak[i] = mak[i] | 1<<j;
 			}
 			// 입력 끝.
-			// 각각의 1<<i가 있는지 없는지 확인하면 됨. (num1 & 1<<i) == (num2 & 1<<i)
+
 			run(0, 0);
 			sb.append("#" + t + " " + mind + "\n");
 		}
@@ -45,8 +45,8 @@ public class SWEA2112_보호필름 {
 	public static void run(int count, int idx) {
 		// 백트래킹
 		if(count >= mind) return;
-		// 싹 돌면서 검사해서
 		
+		// 디버그 코드
 //		for(int i = 0; i < D; i++) {
 //			for(int j = 0; j < W; j++) {
 //				System.out.print(((mak[i] & 1<<j) == 0) ? 0 + " " : 1 + " ");
@@ -54,17 +54,17 @@ public class SWEA2112_보호필름 {
 //			System.out.println();
 //		}
 		
+		// 싹 돌면서 검사해서 조건을 만족하는지 확인.
 		boolean can = true;
+		// 모든 열의 모든 위치에 대해 계산.
 		outer : for(int w = 0; w < W; w++){
 			for(int d = 0; d < D-K+1; d++) {
+				// 연속된 K개가 같은 값인지 확인.
 				for(int k = 0; k < K; k++) {
 					// 연속되게 패널이 나열되어 있으면 계속.
 					if((mak[d] & 1<<w) == (mak[d+k] & 1<<w)) {
-						// 다통과했으면 내보내기.
-						if(k == K-1) {
-//							System.out.println(w + " " + d + ", count : " + count);
-							continue outer;
-						}
+						// 다통과했으면 내보내기.( 다음 열 계산 )
+						if(k == K-1) { continue outer; }
 						// 아직 통과중이면 다음꺼 실행.
 						continue;
 					}
@@ -72,35 +72,27 @@ public class SWEA2112_보호필름 {
 					else break;
 				} // 한 d에 대한 검사문.
 			}
-			// 여기에 오는거 자체가 실패
+			// 여기에 오면 찾기 실패.
 			can = false;
-//			System.out.println("fail");
 			break;
 		}
-//		System.out.println();
 		
 		// 통과하면 mind랑 비교해서 최솟값 넣기.
-		if(can) {
-			mind = Math.min(mind, count);
-			return;
-		}
+		if(can) { mind = Math.min(mind, count); return; }
 		// 통과 못했을 때, 더 할 수 있는게 없으면 리턴.
 		else if(idx >= D) return;
-		// 통과 못하면 그냥 넘겨보거나 두가지로 나눠서 바꿔넘겨보기
+		
+		// 통과 못했을 때, 그냥 넘겨보거나 두가지로 나눠서 바꿔넘겨보기
 		else {
-			// 나를 안바꾸고 다음으로 넘기기
-			run(count, idx+1);
+			run(count, idx+1);				// 나를 안바꾸고 다음으로 넘기기
 			
-			// 다 빈걸로 바꾼 뒤 돌려보기
 			int tmp = insert(0, idx);
-			run(count+1, idx+1);
+			run(count+1, idx+1);			// 다 빈걸로 바꾼 뒤 돌려보기
 			
-			// 다 찬걸로 바꾼 뒤 돌려보기
 			insert(maxin, idx);
-			run(count+1, idx+1);
+			run(count+1, idx+1);			// 다 찬걸로 바꾼 뒤 돌려보기
 			
-			// 원상복구
-			mak[idx] = tmp;
+			mak[idx] = tmp;					// 원상복구
 		}
 		
 	}
