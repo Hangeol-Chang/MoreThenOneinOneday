@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ11404_플로이드2",
+            "request": "launch",
+            "mainClass": "ChangHangeol.BJ11404_플로이드2",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ11404_폴로이드",
             "request": "launch",
             "mainClass": "ChangHangeol.BJ11404_폴로이드",
