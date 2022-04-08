@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BJ2115_벌꿀채취 {
+public class SWEA2115_벌꿀채취 {
 	static int N, M, C;
 	static int[][] mapref, map;
 	static int maxearn;
