@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ11404_폴로이드",
+            "request": "launch",
+            "mainClass": "ChangHangeol.BJ11404_폴로이드",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch SWEA1949_등산로조성",
             "request": "launch",
             "mainClass": "ChangHangeol.SWEA1949_등산로조성",
