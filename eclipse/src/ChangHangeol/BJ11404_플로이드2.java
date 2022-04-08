@@ -16,7 +16,7 @@ public class BJ11404_플로이드2 {
 
         // 배열 초기화
         int[][] arr = new int[N+1][N+1];
-        for(int i = 1; i <= N; i++) Arrays.fill(arr[i], 100001);
+        for(int i = 1; i <= N; i++) Arrays.fill(arr[i], 10000001);
 
         for(int m = 0; m < M; m++){
             st = new StringTokenizer(br.readLine());
@@ -38,7 +38,7 @@ public class BJ11404_플로이드2 {
         }
         for(int i = 1; i <= N; i++){
             for(int j = 1; j <= N; j++){
-                ansb.append((j==i) ? "0 " : (arr[i][j] == 100001) ? "0 " : arr[i][j] + " ");
+                ansb.append((j==i) ? "0 " : (arr[i][j] == 10000001) ? "0 " : arr[i][j] + " ");
             }
             ansb.append("\n");
         }
