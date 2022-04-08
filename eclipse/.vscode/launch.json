@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SWEA1949_등산로조성",
+            "request": "launch",
+            "mainClass": "ChangHangeol.SWEA1949_등산로조성",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ구데기컵2_2_1_2",
             "request": "launch",
             "mainClass": "ChangHangeol.BJ구데기컵2_2_1_2",
