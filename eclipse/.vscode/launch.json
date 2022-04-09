@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ1918_후위표기식",
+            "request": "launch",
+            "mainClass": "ChangHangeol.BJ1918_후위표기식",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ1865_웜홀",
             "request": "launch",
             "mainClass": "ChangHangeol.BJ1865_웜홀",
