@@ -36,7 +36,7 @@ public class SWEA3289_서로소집합 {
 				case 1 :
 					sb.append(same(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())) ? 1 : 0);
 				}
-				System.out.println(Arrays.toString(p));
+//				System.out.println(Arrays.toString(p));
 			}
 			sb.append("\n");
 		}
@@ -67,5 +67,30 @@ public class SWEA3289_서로소집합 {
 1000000 2
 0 1 999999
 1 999999 1
+
+3
+10 5
+0 1 7
+0 1 6
+1 6 7
+0 4 1
+1 4 7
+1000000 2
+0 1 999999
+1 999999 1
+10 12
+0 1 7
+0 1 6
+0 8 7
+0 7 4
+1 1 6
+1 1 7
+1 8 4
+0 5 9
+1 9 1
+0 9 1
+0 9 8
+1 5 8
+
 
 */

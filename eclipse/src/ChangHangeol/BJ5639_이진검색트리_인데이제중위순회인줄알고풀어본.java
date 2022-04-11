@@ -5,36 +5,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 // 전위순회 결과 주고, 후위순회 결과 구해라.
 // 이 트리는 자료 크기로 구분된 트리임.
-public class BJ5639_이진검색트리 {
-	static StringBuilder sb = new StringBuilder();
-	
+public class BJ5639_이진검색트리_인데이제중위순회인줄알고풀어본 {
 	static class node{
-		node left, right;
 		int data;
-
-		node(int data){
+		node left;
+		node right;
+		node parent;
+		// 값과 부모의 주소를 저장.
+		node(int data, node parent){
 			this.data = data;
-		}
-		
-		// 트리 만들어버리기.
-		public void insertdata(int newdata){
-			if(newdata < data) {
-				if(left == null) left = new node(newdata);
-				else			 left.insertdata(newdata);
-			}else {
-				if(right == null) right = new node(newdata);
-				else			  right.insertdata(newdata);
-			}
-		}
-		
-		public void printSystem() {
-			if(left != null) left.printSystem();
-			if(right!= null) right.printSystem();
-			
-			sb.append(data + "\n");
+			this.parent = parent;
 		}
 	}
 	public static void main(String[] args) {
@@ -52,10 +36,22 @@ public class BJ5639_이진검색트리 {
 		}
 		// 입력 완료.
 		
-		node root = new node(que.poll());
-		while(!que.isEmpty()) root.insertdata(que.poll());
+		StringBuilder sb = new StringBuilder();
+		Stack<Integer> stk = new Stack<>();
+		// 중위순회 출력구조.
+		// 전위순회 구조를 바탕으로 트리를 생성.
+		System.out.println(que);
+		int last = 0;
+		while(!que.isEmpty()) {
+			int now = que.poll();
+			while(!stk.isEmpty() && stk.peek()  < now) {
+				sb.append(stk.pop() + "\n");
+			}
+			stk.add(now);
+		}
+		while(!stk.isEmpty())
+			sb.append(stk.pop() + "\n");
 		
-		root.printSystem();
 		System.out.println(sb);
 	}
 }
