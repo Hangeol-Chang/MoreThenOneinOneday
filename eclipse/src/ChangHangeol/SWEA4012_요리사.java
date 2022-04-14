@@ -9,7 +9,6 @@ public class SWEA4012_요리사 {
 	static int N;
 	static int min;
 	static int[][] ingre;
-	static boolean[] visited;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
@@ -19,7 +18,6 @@ public class SWEA4012_요리사 {
 		for(int t = 1; t <= T; t++) {
 			N = Integer.parseInt(br.readLine());
 			ingre = new int[N+1][N+1];
-			visited = new boolean[(int) Math.pow(2, N+1)];
 			for(int i = 1; i <= N; i++) {
 				st = new StringTokenizer(br.readLine());
 				for(int j = 1; j <= N; j++)
@@ -34,26 +32,23 @@ public class SWEA4012_요리사 {
 			}
 			// 정리 끝.
 			min = 40000;
-			select(0, 0);
+			select(0, 0, 0);
 			
 			sb.append("#" + t + " " + min + "\n");
 		}
 		System.out.println(sb);
 	}
 	
-	public static void select(int bit, int count) {
-		if(visited[bit]) return;
-		visited[bit] = true;
-			
+	public static void select(int bit, int count, int idx) {
+		if(idx > N) return;
 		if(count == N/2) {
+//			System.out.println(bit);
 			calc(bit);
 			return;
 		}
-		for(int i = count; i <= N; i++) {
-			// 이번 재료를 넣고 넘기느냐, 안넣고 넘기느냐.
-			select(bit | 1<<i , count+1);
-			select(bit, count+1);
-		}
+		// 이번 재료를 넣고 넘기느냐, 안넣고 넘기느냐.
+		select(bit | 1<<idx , count+1, idx+1);
+		select(bit, count, idx+1);
 	}
 	public static void calc(int bit) {
 		int mat1 = 0;
