@@ -17,9 +17,5 @@ public class BJ11444_피보나치수6 {
 //			System.out.println(i + " " + fibo[i]);
 //		}
 		
-		
-		BigInteger n = new BigInteger(br.readLine());
-		BigDecimal f = new BigDecimal("5");
-		BigInteger ans = (() - (1- f.)) / f.pow(0.5);
 	}
 }
