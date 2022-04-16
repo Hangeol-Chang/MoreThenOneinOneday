@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// 이분탐색 어퍼바운드
+// 이분탐색 로어바운드
 public class BJ2805나무자르기 {
 	static int N, M;
 	static int[] trees;
