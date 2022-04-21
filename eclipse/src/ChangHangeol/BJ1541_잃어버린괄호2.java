@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-// 시간 초과
-public class BJ1541_잃어버린괄호 {
+public class BJ1541_잃어버린괄호2 {
 	static ArrayList<Integer> nums = new ArrayList<>();
 	static ArrayList<Character> idfs = new ArrayList<>();
 	static int minv = 1000000;
@@ -44,51 +43,27 @@ public class BJ1541_잃어버린괄호 {
 			else ref = now;
 		}
 		// 정리완료.
-		System.out.println();
-		for(int i = 0; i < idfs.size(); i++)
-			System.out.print(nums.get(i) + "" + idfs.get(i));
-		System.out.print(nums.get(nums.size()-1));
-		System.out.println();		
-		
-		run();
-		System.out.println(minv);
-	}
-	public static void run() {
-		if(nums.size() == 1) {
-//			System.out.println("통과 : " + nums.get(0));
-			minv = Math.min(minv, nums.get(0));
-			return;
-		}
-		
+//		System.out.println();
+//		for(int i = 0; i < idfs.size(); i++)
+//			System.out.print(nums.get(i) + "" + idfs.get(i));
+//		System.out.print(nums.get(nums.size()-1));
+//		System.out.println();		
+//		
+		// + 다 처리
 		for(int i = 0; i < idfs.size(); i++) {
-			int num1 = nums.remove(i);
-			int num2 = nums.remove(i);
-			
-			int num = 0;
-			char idf = idfs.remove(i);
-			switch(idf) {
-			case '+' :
-				num = num1 + num2;
-				break;
-			case '-' :
-				num = num1 - num2;
-				break;
+			char now = idfs.get(i);
+			if(now == '+') {
+				nums.add(i, nums.remove(i) + nums.remove(i));
+				idfs.remove(i);
+				i--;
 			}
-			nums.add(i, num);
-			
-//			System.out.println();
-//			for(int j = 0; j < idfs.size(); j++)
-//				System.out.print(nums.get(j) + "" + idfs.get(j));
-//			System.out.print(nums.get(nums.size()-1));
-//			System.out.println();
-			run();
-			
-			// 원상복귀
-			nums.remove(i);
-			nums.add(i, num2);
-			nums.add(i, num1);
-			idfs.add(i, idf);
 		}
+		while(idfs.size() > 0) {
+			char now = idfs.remove(0);
+			nums.add(0, nums.remove(0) - nums.remove(0));
+		}
+		
+		System.out.println(nums.get(0));
 	}
 }
 
