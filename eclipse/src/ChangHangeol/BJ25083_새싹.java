@@ -1,3 +1,4 @@
+package ChangHangeol;
 public class BJ25083_새싹 {
     public static void main(String[] args){
         System.out.println("         ,r'\"7");
