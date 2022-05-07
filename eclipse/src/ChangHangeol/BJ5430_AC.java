@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-// 베열요소가 하나일 때 처리 애매함.
 public class BJ5430_AC {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
