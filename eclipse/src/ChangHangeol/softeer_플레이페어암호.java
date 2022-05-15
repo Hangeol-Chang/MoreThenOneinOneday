@@ -25,19 +25,18 @@ public class softeer_플레이페어암호 {
 			if(enc[i] == -1) enc[i] = idx++;
 		// 암호화 표 생성 완료.
 		
-		
 		// 메세지 정리
 		for(int i = 1; i < msg.length(); i = i+2) {
 			if(msg.charAt(i-1) == msg.charAt(i)) {
 				char insert = 'X';
 				if(msg.charAt(i-1) == 'X') insert = 'Q';
-				msg = msg.substring(0, i) + insert + msg.substring(i);				
+				msg = msg.substring(0, i) + insert + msg.substring(i);	
 			}
 		}
 		if(msg.length() % 2 != 0) msg += 'X';
+		
 		for(int i = 0; i < msg.length(); i = i+2)
 			module.add(msg.substring(i, i+2));
-		
 		// 데이터 정리 완료
 		
 		StringBuilder ans = new StringBuilder();
@@ -88,12 +87,6 @@ public class softeer_플레이페어암호 {
 01234 56789 01234
 ABCDE FGHIK LMNOP
 65
-NALNBQEWTANRTZEZTKKOWQWUGW
-NALNBQEWTANRTZEZTKKOWQWUGW
-I
-73
 
-J
-74
 
 */
