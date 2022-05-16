@@ -22,6 +22,7 @@ public class BJ10026_적녹색약 {
 			String ref = br.readLine();
 
 			for (int j = 0; j < N; j++)
+				map[i][j] = ref.charAt(j);
 		}
 		// 입력 완료
 
