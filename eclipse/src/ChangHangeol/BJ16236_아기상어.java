@@ -4,41 +4,22 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
-/*
- * 나보다 작거나 같은 물고기를 지나갈 수 있음.
- * 나보다 작은 물고기만 먹을 수 있음.
- * 
- * 현재 상황에서 가장 가까운 먹을 수 있는 물고기를 먹고,
- * 한 칸 이동에 1초가 소요됨.
- * 이동거리가 같으면, 왼쪽 위에 있는 놈부터 처리.
- * caneat 큐를 만들어서, 이번 턴에 먹을 수 있는 것들을 정리해서 넣어놓고,
- * 
- * 먹을 수 있으면 시간 출력.
- * 없으면 0 출력
- * 
- * 자기 머릿수만큼 먹으면 사이즈가 증가함.
- * 
- * 움직일 수 있는 모든 칸으로 bfs를 보내면서,
- * 물고기를 먹으면 그 위치로 초기화.
- * 
- */
 public class BJ16236_아기상어 {
-	static int N;
-	static int[][] map;
-	
 	public static class shark {
 		int y, x, size, eat;
-		public shark(int y, int x) {
-			this.y = y;
-			this.x = x;
+		public shark() {
 			size = 2;
 			eat = 0;
 		}
-		
+		public void move(int y, int x) {
+			this.y = y;
+			this.x = x;
+		}
 		public void eat() {
 			eat++;
 			if(size <= eat) {
@@ -48,48 +29,127 @@ public class BJ16236_아기상어 {
 		}
 	}
 	public static class loc implements Comparable<loc> {
-		int y, x;
-		public loc(int y, int x) {
+		int y, x, len;
+		public loc(int y, int x, int len) {
 			this.y = y;
 			this.x = x;
+			this.len = len;
 		}
+		
+		// 거리가 같은 것들이 들어올 때, y에 대해 우선 정렬. 같으면 x로 정렬
 		@Override
 		public int compareTo(loc o) {
-			// TODO Auto-generated method stub
-			if(this.y != o.y) {
-				return this.y - o.y;
-			}
-			else {
-				return this.x - this.y;
-			}
+			if(this.y != o.y) { return this.y - o.y; }
+			else { return this.x - o.x; }
 		}
-	}
-	static int[] shark = new int[2];
-	static TreeSet<loc> caneat = new TreeSet<>();
-	static Queue<loc> sharkmove = new LinkedList<>();
+	}	
 	static int[] dr = {-1, 1, 0, 0};
 	static int[] dc = {0, 0, -1, 1};
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-		N = Integer.parseInt(br.readLine());
-		map = new int[N][N];
+		
+		int N = Integer.parseInt(br.readLine());
+		int[][] map = new int[N][N];
+		shark sk = new shark();
+		
 		for(int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			for(int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
-				if(map[i][j] == 9) {
-					shark[0] = i;
-					shark[1] = j;
-					map[i][j] = 0;
+				
+				if(map[i][j] != 0) {
+					if(map[i][j] == 9) {
+						sk.move(i, j);
+						map[i][j] = 0;
+					}
 				}
 			}
 		}
-		// 어케해야되냐
+		// 입력 완.
+		
+		int time = 0;
+		boolean[][] visited = new boolean[N][N];
+		Queue<loc> que = new LinkedList<>();
+		PriorityQueue<loc> pq = new PriorityQueue<>();
+		que.add(new loc(sk.y, sk.x, 0));
+		visited[sk.y][sk.x] = true; 
+		
+		
+		// 먹을게 남아있는 한 계속 진행.
+		while(!que.isEmpty()) {
+			int size = que.size();
+			
+			boolean eat = false;
+			for(int i = 0; i < size; i++) {
+				loc now = que.poll();
+				
+				for(int d = 0; d < 4; d++) {
+					int ny = now.y + dr[d];
+					int nx = now.x + dc[d];
+					
+					if(ny < 0 || ny >= N || nx < 0 || nx >= N || visited[ny][nx] || map[ny][nx] > sk.size) continue;
+					visited[ny][nx] = true;
+					
+					if(map[ny][nx] == 0 || map[ny][nx] == sk.size) 
+						que.add(new loc(ny, nx, now.len + 1));
+					else {
+						eat = true;
+						pq.add(new loc(ny, nx, now.len + 1));
+					}
+				}
+			}
+			
+			if (eat) {
+				loc eatloc = pq.poll();
+				map[eatloc.y][eatloc.x] = 0; 
+				sk.eat();
+				time += eatloc.len;
+				sk.move(eatloc.y, eatloc.x);
+				
+				pq.clear();
+				que.clear();
+				
+				que.add(new loc(sk.y, sk.x, 0));
+				
+				visited = new boolean[N][N];
+				visited[sk.y][sk.x] = true;
+				
+//				for(int i = 0; i < N; i++) {
+//					for(int j = 0; j < N; j++) {
+//						System.out.print(map[i][j] + " ");
+//					}
+//					System.out.println();
+//				}
+//				System.out.println("시간 : " + time + ", 위치 : " + sk.y + " " + sk.x + ", 크기  : " + sk.size);
+//				System.out.println();
+			}
+		}
+		System.out.println(time);
 		
 	}
-	public static int pathfind(int[] start, int[] end, int dist, int[][] visit) {
-		return 0;
-	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
