@@ -18,7 +18,7 @@ public class TestcaseMaker {
 		}
 	}
 	public static int randN() {
-		return (int)(Math.random()*(30-1) + 1);
+		return (int)(Math.random()*(40-1) + 1);
 	}
 	public static int randK(int n) {
 		return (int)(Math.random()*(n-1) + 1);
