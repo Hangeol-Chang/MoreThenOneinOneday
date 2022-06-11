@@ -15,20 +15,19 @@ public class BJ20040_사이클게임 {
 		
 		p = new int[N];
 		for(int i = 0; i < N; i++) p[i] = i;
-		
-		int ans = 0;
+
 		for(int m = 1; m <= M; m++) {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
 			
 			if(parent(a) == parent(b)) {
-				if(ans == 0) ans = m;
-				continue;
+				System.out.println(m);
+				return;
 			}
 			union(a, b);
 		}
-		System.out.print(ans);
+		System.out.print(0);
 	}
 	public static void union(int x, int y) {
 		p[parent(y)] = parent(x);
