@@ -49,11 +49,12 @@ public class BJ2143_두배열의합 {
 		while(ap < apsum.size() && bp < bpsum.size()) {
 			long sum = apsum.get(ap) + bpsum.get(bp);
 			
-			// 합이 T보다 크면 b쪽을 내리기
+			// 합이 T보다 크면 b쪽을 올리기
 			if(sum > T) {
 				long idf = bpsum.get(bp);
 				while(bp < bpsum.size() && idf == bpsum.get(bp)) bp++;
 			}
+			// 합이 T보다 작으면 a쪽을 올리기
 			else if(sum < T) {
 				long idf = apsum.get(ap);
 				while(ap < apsum.size() && idf == apsum.get(ap)) ap++;
