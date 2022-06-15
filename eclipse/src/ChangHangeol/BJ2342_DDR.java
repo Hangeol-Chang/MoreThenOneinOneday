@@ -10,13 +10,12 @@ import java.util.stream.Stream;
 public class BJ2342_DDR {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int[] steps = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		int[][][] dp = new int[2][5][5];
 		int ini = Integer.parseInt(st.nextToken());
 		if(ini == 0) {
-			System.out.print(0);
-			return;
+			System.out.println(0); return;
 		}
 		dp[0][ini][0] = 2;
 		dp[0][0][ini] = 2;
@@ -26,7 +25,7 @@ public class BJ2342_DDR {
 			if(a == 0) break;
 			
 //			System.out.println(a);
-			for(int l = 0; l < 4; l++) {
+			for(int l = 0; l < 5; l++) {
 				for(int r = 0; r < 5; r++) {
 					if(dp[0][l][r] == 0) continue;
 					
