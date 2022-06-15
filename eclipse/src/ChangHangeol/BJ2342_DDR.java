@@ -3,74 +3,72 @@ package ChangHangeol;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.Stream;
 
 public class BJ2342_DDR {
-	static class person {
-		int l, r;
-		int cost;
-		person(int l, int r, int cost) {
-			this.l = l;
-			this.r = r;
-			this.cost = cost;
-		}
-//		@Override
-//		public String toString() {
-//			return "person [l=" + l + ", r=" + r + ", cost=" + cost + "]";
-//		}
-		
-	}
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		int[] steps = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 		
-		// 이번꺼를 왼쪽발로 누를 때, 오른쪽 걸로 누를 때 나눠서 dp
-		person[][] ddr = new person[2][2];
-		ddr[0][0] = new person(0, 0, 0);
-		ddr[0][1] = new person(0, 0, 0);
+		int[][][] dp = new int[2][5][5];
+		int ini = Integer.parseInt(st.nextToken());
+		if(ini == 0) {
+			System.out.print(0);
+			return;
+		}
+		dp[0][ini][0] = 2;
+		dp[0][0][ini] = 2;
 		
 		while(true) {
 			int a = Integer.parseInt(st.nextToken());
 			if(a == 0) break;
 			
-			for(int i = 0; i < 2; i++) {
-				int cost1 = push(ddr[0][0], i, a);
-				int cost2 = push(ddr[0][1], i, a);
-				
-				if(i == 0) {
-					if(cost1 < cost2) { ddr[1][i] = new person(a, ddr[0][0].r, ddr[0][0].cost + cost1); }
-					else 			  { ddr[1][i] = new person(a, ddr[0][1].r, ddr[0][1].cost + cost2); }					
-				}
-				else {
-					if(cost1 < cost2) { ddr[1][i] = new person(ddr[0][0].l, a, ddr[0][0].cost + cost1); }
-					else 			  { ddr[1][i] = new person(ddr[0][1].l, a, ddr[0][1].cost + cost2); }					
+//			System.out.println(a);
+			for(int l = 0; l < 4; l++) {
+				for(int r = 0; r < 5; r++) {
+					if(dp[0][l][r] == 0) continue;
+					
+					// 왼발로 밟아보기
+					if(a != r) {
+						if(dp[1][a][r] == 0) dp[1][a][r] = getcost(l, a) + dp[0][l][r];
+						else				 dp[1][a][r] = Math.min(getcost(l, a) + dp[0][l][r], dp[1][a][r]);
+					}
+					
+					// 오른발로 밟아보기
+					if(a != l) {
+						if(dp[1][l][a] == 0) dp[1][l][a] = getcost(r, a) + dp[0][l][r];
+						else				 dp[1][l][a] = Math.min(getcost(r, a) + dp[0][l][r], dp[1][l][a]);						
+					}
 				}
 			}
-			ddr[0][0] = ddr[1][0];
-			ddr[0][1] = ddr[1][1];
-//			System.out.println("===");
-//			System.out.println(0 + " " + ddr[0][0].toString());
-//			System.out.println(1 + " " + ddr[0][1].toString());
+			// dp 끝.
+			// 슬라이딩 윈도 정리
+			for(int i = 0; i < 5; i++) {
+				dp[0][i] = dp[1][i].clone();				
+//				System.out.println(Arrays.toString(dp[0][i]));
+			}
+			dp[1] = new int[5][5];
+//			System.out.println("=======");
 		}
-		System.out.print(Math.min(ddr[0][0].cost, ddr[0][1].cost));
+		int min = 1000000;
+		for(int i = 0; i < 5; i++) {
+			for(int j = 0; j < 5; j++) {
+				if(dp[0][i][j] == 0) continue;
+				
+				min = Math.min(min, dp[0][i][j]);
+			}
+		}
+		System.out.print(min);
 	}
 	// foot : 0이 왼발, 1이 오른발
-	static int push(person p, int foot, int press) {
-		int loc = 0;
+	static int getcost(int foot, int press) {
 		int cost = 0;
 		
-		if(foot == 0) {
-			loc = p.l;
-			if(p.r == press) return 5;
-		}
-		else {
-			loc = p.r;
-			if(p.l == press) return 5;
-		}
-		
-		if(loc == 0) cost = 2;
-		else if ( loc == press ) cost = 1;
-		else if ( Math.abs(loc - press) == 2) cost = 4;
+		if(foot == 0) cost = 2;
+		else if ( foot == press ) cost = 1;
+		else if ( Math.abs(foot - press) == 2) cost = 4;
 		else cost = 3;
 		
 		return cost;
