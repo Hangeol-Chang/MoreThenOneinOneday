@@ -1,13 +1,13 @@
-
 {
     "version": "2.0.0",
     "runner": "terminal",
     "type": "shell",
     "echoCommand": true,
-    "presentation" : { "reveal": "always" },
+    "presentation": {
+        "reveal": "always"
+    },
     "tasks": [
-          //C++ 컴파일
-          {
+        {
             "label": "save and compile for C++",
             "command": "g++",
             "args": [
@@ -15,19 +15,16 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
-            "group": "build",
-
-            //컴파일시 에러를 편집기에 반영
-            //참고:   https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
-
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": {
                 "fileLocation": [
                     "relative",
                     "${workspaceRoot}"
                 ],
                 "pattern": {
-                    // The regular expression.
-                  //Example to match: helloWorld.c:5:3: warning: implicit declaration of function 'prinft'
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning error):\\s+(.*)$",
                     "file": 1,
                     "line": 2,
@@ -37,7 +34,6 @@
                 }
             }
         },
-        //C 컴파일
         {
             "label": "save and compile for C",
             "command": "gcc",
@@ -47,18 +43,12 @@
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "group": "build",
-
-            //컴파일시 에러를 편집기에 반영
-            //참고:   https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher
-
             "problemMatcher": {
                 "fileLocation": [
                     "relative",
                     "${workspaceRoot}"
                 ],
                 "pattern": {
-                    // The regular expression.
-                  //Example to match: helloWorld.c:5:3: warning: implicit declaration of function 'prinft'
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning error):\\s+(.*)$",
                     "file": 1,
                     "line": 2,
@@ -73,9 +63,49 @@
             "command": "cmd",
             "group": "test",
             "args": [
-                "/C", "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "/C",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ]
-   
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cpp.exe 활성 파일 빌드",
+            "command": "C:\\MinGW\\bin\\cpp.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "디버거에서 생성된 작업입니다."
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 활성 파일 빌드",
+            "command": "C:/MinGW/bin/g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "C:/MinGW/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "디버거에서 생성된 작업입니다."
         }
     ]
 }

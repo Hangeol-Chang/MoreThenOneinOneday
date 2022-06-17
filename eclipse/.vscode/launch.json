@@ -13,6 +13,7 @@
             "request": "launch",
             "mainClass": "SWEA6190_정곤이의단조증가하는수",
             "projectName": "eclipse"
-        }
+        },
     ],
+    "version": "2.0.0"
 }
