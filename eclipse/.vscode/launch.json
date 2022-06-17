@@ -1,106 +1,12 @@
 {
-    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
-    // 기존 특성에 대한 설명을 보려면 가리킵니다.
-    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
-    "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "Launch BJ1991_트리순회",
+            "name": "Launch SWEA6190_정곤이의단조증가하는수",
             "request": "launch",
-            "mainClass": "ChangHangeol.BJ1991_트리순회",
+            "mainClass": "SWEA6190_정곤이의단조증가하는수",
             "projectName": "eclipse"
         },
-        {
-            "type": "java",
-            "name": "Launch BJ2263_트리순회",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ2263_트리순회",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ1918_후위표기식",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ1918_후위표기식",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ1865_웜홀",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ1865_웜홀",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ11404_플로이드2",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ11404_플로이드2",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ11404_폴로이드",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ11404_폴로이드",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch SWEA1949_등산로조성",
-            "request": "launch",
-            "mainClass": "ChangHangeol.SWEA1949_등산로조성",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ구데기컵2_2_1_2",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ구데기컵2_2_1_2",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch BJ3584_가장가까운공통조상",
-            "request": "launch",
-            "mainClass": "ChangHangeol.BJ3584_가장가까운공통조상",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch SWEA2930힙_규진이형",
-            "request": "launch",
-            "mainClass": "ChangHangeol.SWEA2930힙_규진이형",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch SWEA2930_힙2",
-            "request": "launch",
-            "mainClass": "ChangHangeol.SWEA2930_힙2",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch SWEA_2930_힙_규진이형",
-            "request": "launch",
-            "mainClass": "ChangHangeol.SWEA_2930_힙_규진이형",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "java",
-            "name": "Launch 실버컵_B번_돌무더기게임2",
-            "request": "launch",
-            "mainClass": "ChangHangeol.실버컵_B번_돌무더기게임2",
-            "projectName": "eclipse"
-        },
-        {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        }
-    ]
+    ],
+    "version": "2.0.0"
 }
