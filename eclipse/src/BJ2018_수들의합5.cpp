@@ -22,12 +22,5 @@ int main() {
         }
         // printf("sum %d\n", sum);
     }
-    while(sum >= num){
-        sum -= l++;
-        if(sum == num) {
-            ans++;
-            break;
-        }
-    }
     cout << ans;
 }
