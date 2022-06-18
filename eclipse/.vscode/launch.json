@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ4158_CD",
+            "request": "launch",
+            "mainClass": "BJ4158_CD",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ1055_끝이없음",
             "request": "launch",
             "mainClass": "BJ1055_끝이없음",
@@ -13,7 +20,7 @@
             "request": "launch",
             "mainClass": "SWEA6190_정곤이의단조증가하는수",
             "projectName": "eclipse"
-        },
+        }
     ],
     "version": "2.0.0"
 }

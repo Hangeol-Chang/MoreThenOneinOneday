@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.StringTokenizer;
 
 public class BJ4158_CD {
@@ -16,7 +17,11 @@ public class BJ4158_CD {
 
             if(N == 0 && M == 0) break;
 
-            
+            HashSet<Integer> set = new HashSet<>();
+            for(int i = 0; i < N+M; i++){
+                set.add(Integer.parseInt(br.readLine()));
+            }
+            sb.append(N + M - set.size() + "\n");
         }
         System.out.print(sb);
     }
