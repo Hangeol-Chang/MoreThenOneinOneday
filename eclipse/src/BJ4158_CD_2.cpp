@@ -11,7 +11,6 @@ int main() {
     do {
         int N, M;
         cin >> N >> M;
-        // 0 0 입력에 프로그램 끝내기.
         if(N == 0 && M == 0) return 0;
 
         unordered_set<int> pi;
