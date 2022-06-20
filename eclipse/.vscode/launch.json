@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ7453_합이0인네정수",
+            "request": "launch",
+            "mainClass": "BJ7453_합이0인네정수",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ4158_CD",
             "request": "launch",
             "mainClass": "BJ4158_CD",
