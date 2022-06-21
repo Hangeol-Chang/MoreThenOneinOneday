@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ1484_다이어트",
+            "request": "launch",
+            "mainClass": "BJ1484_다이어트",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ7453_합이0인네정수",
             "request": "launch",
             "mainClass": "BJ7453_합이0인네정수",
