@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ2022_사다리",
+            "request": "launch",
+            "mainClass": "BJ2022_사다리",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ1484_다이어트",
             "request": "launch",
             "mainClass": "BJ1484_다이어트",
