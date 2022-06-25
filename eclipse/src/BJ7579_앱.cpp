@@ -1,39 +1,51 @@
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-int totcost;
-int N, M;
-
-int *memories;
-int *shutcost;
-
-void sel(int idx, int cost, int memory){
-    if(cost >= totcost) return;
-    if(memory >= M) {
-        totcost = cost;
-        return;
-    }
-
-    for(int i = idx; i < N; i++)
-        sel(i+1, cost + shutcost[i], memory + memories[i]);
-    
-}
-
 int main() {
+    int N, M;
+    int *memories;
+    int *shutcost;
+
     cin >> N >> M;
 
-    // 초기화
-    totcost = 1000000;
+    memories = new int[N+1];
+    shutcost = new int[N+1];
+    int costsum = 0;
 
-    memories = new int[N];
-    shutcost = new int[N];
+    for(int i = 1; i <= N; i++) cin >> memories[i];
+    for(int i = 1; i <= N; i++) {
+        cin >> shutcost[i];
+        costsum += shutcost[i];
+    }
+
+    int dp[N+1][costsum + 1];
     
-    for(int i = 0; i < N; i++) cin >> memories[i];
-    for(int i = 0; i < N; i++) cin >> shutcost[i];
+    for(int i = 0; i <= costsum; i++) dp[0][i] = 0;
 
-    int dp[N+1][M+1];
+    for(int i = 1; i <= N; i++ ) {
+        for(int j = 0; j <= costsum; j++) {
+            dp[i][j] = 0;
 
-    sel(0, 0, 0);
-    cout << totcost; 
+            if( j - shutcost[i] >= 0 ) 
+                dp[i][j] = dp[i-1][j-shutcost[i]] + memories[i];
+
+            dp[i][j] = max(dp[i][j], dp[i-1][j]);
+        }
+    }
+
+    // for(int i = 0; i <= N; i++) {
+    //     for(int j = 0; j <= costsum; j++){
+    //         printf("%4d", dp[i][j]);
+    //     }
+    //     cout << endl;
+    // }
+
+    for(int i = 0; i <= costsum; i++) {
+        if(dp[N][i] >= M) {
+            cout << i << endl;
+            return 0;
+        } 
+    }
 }
