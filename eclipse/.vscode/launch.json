@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ2420_사파리월드",
+            "request": "launch",
+            "mainClass": "BJ2420_사파리월드",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ10830_행렬제곱",
             "request": "launch",
             "mainClass": "BJ10830_행렬제곱",
