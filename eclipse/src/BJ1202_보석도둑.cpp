@@ -53,7 +53,6 @@ int main() {
     int bagidx = 0;
 
     // K번째 가방까지 다 넣거나
-    // 넣을 수 없는 데 까지 다 넣으면 끝애야 함.
     long long ans = 0;
     priority_queue<long long> pq;
 
