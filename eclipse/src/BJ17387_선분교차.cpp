@@ -43,8 +43,8 @@ int main() {
         if(x2 >= x3 && x1 < x4) cout << 1;
         else cout << 0;
     } 
-    else if(case1 < 0 && case2 < 0) cout << 1;
-    else cout << 0;
+    else if(case1 > 0 && case2 > 0) cout << 0;
+    else cout << 1;
 }
 
 /*
