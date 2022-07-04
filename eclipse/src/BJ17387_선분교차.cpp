@@ -7,7 +7,7 @@ struct coordinate {
     long long y;
 };
 
-double externalproduct(coordinate std, coordinate p1, coordinate p2) {
+long long externalproduct(coordinate std, coordinate p1, coordinate p2) {
     coordinate dir1, dir2;
     dir1.x = p1.x - std.x;
     dir1.y = p1.y - std.y;
@@ -15,7 +15,7 @@ double externalproduct(coordinate std, coordinate p1, coordinate p2) {
     dir2.x = p2.x - std.x;
     dir2.y = p2.y - std.y;
 
-    double res = dir1.x * dir2.y - dir1.y * dir2.x;
+    long long res = dir1.x * dir2.y - dir1.y * dir2.x;
     return res;
 }
 
@@ -29,8 +29,8 @@ int main() {
 
     // p1 -> p2를 기준으로 p3, p4를 외적.
     // p3 -> p4를 기준으로 p1, p2를 외적.
-    double case1 = externalproduct(p1, p2, p3) * externalproduct(p1, p2, p4);
-    double case2 = externalproduct(p3, p4, p1) * externalproduct(p3, p4, p2);
+    long long case1 = externalproduct(p1, p2, p3) * externalproduct(p1, p2, p4);
+    long long case2 = externalproduct(p3, p4, p1) * externalproduct(p3, p4, p2);
 
     if(case1 == 0 && case2 == 0) {
         // 값 비교 필요.
@@ -42,9 +42,11 @@ int main() {
 
         if(x2 >= x3 && x1 < x4) cout << 1;
         else cout << 0;
-    } 
-    else if(case1 > 0 && case2 > 0) cout << 0;
-    else cout << 1;
+    }
+    else if(case1 < 0 && case2 < 0) cout << 1;
+    else if((case1 == 0 && case2 < 0) ||
+            (case2 == 0 && case1 < 0)) cout << 1;
+    else cout << 0;
 }
 
 /*
