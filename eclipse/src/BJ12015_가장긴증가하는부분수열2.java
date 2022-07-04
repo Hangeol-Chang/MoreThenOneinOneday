@@ -40,9 +40,8 @@ public class BJ12015_가장긴증가하는부분수열2 {
     	while(st < ed) {
     		md = (st + ed)/2;
     		int chk = save.get(md);
-    		if(chk < val) 	   st = md+1;
-    		else if(chk > val) ed = md;
-    		else 			   return md;
+    		if(chk < val) st = md+1;
+    		else		  ed = md;
     	}
     	
     	return st;
