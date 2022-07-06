@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits>
 
+// gg
+
 using namespace std;
 
 int n;
@@ -9,60 +11,79 @@ int *dp;
 int fullvisit;
 
 int circuit2(int nowloc, int visited) {
-    if(dp[visited] != 0) return dp[visited];
+    cout << "\nnowloc : " << nowloc << " visited : " << visited << "\n";
+    if(nowloc == 0) {
+        if(visited == fullvisit) return -1;
+        else return -2;
+    }
+
+    if(dp[visited] != 0) {
+        cout << "return" << visited << " " << dp[visited] << "\n";
+        return dp[visited];
+    }
 
     //저장되지 않았으면, dp[visited]를 구해야 함.
     int mincost = numeric_limits<int>::max();
-    for(int i = 1; i <= n; i++) {
-        if(map[nowloc][i] != 0 && (~visited & 1<<i) > 0) {
-            mincost = min(mincost, map[nowloc][i] + circuit2(i, visited | 1<<i));
-        } 
-    }
-}
-
-/*
-void circuit(int nowloc, int visited, int cost) {
-    if(cost >= mincost) return;
-    if(nowloc == 0) {
-        if (visited != 0) {
-            if(visited == fullvisit) {
-                mincost = min(cost, mincost);
-            }
-            return;
-        }
-    }
-
     for(int i = 0; i < n; i++) {
-        // 길이 있고, 방문한 적이 없으면
-        if(map[nowloc][i] != 0 && (~visited & 1<<i) > 0) {
-            circuit(i, visited | 1<<i, cost + map[nowloc][i]);
-        }
-    }
 
+        if(!(visited & 1<<i)) {
+            if(dp[visited] == 0) {
+                int tmpcost = circuit2(i, visited | 1<<i);
+
+                dp[visited] = map[nowloc][i] + circuit2(i, visited | 1<<i);
+            }
+            mincost = min(mincost, dp[visited]);
+        }
+        cout << mincost << "\n";
+
+        for(int i = 0; i <= fullvisit; i++) {
+            cout << dp[i] << " ";
+        }
+        cout << "\n";
+    }
+    return mincost;
 }
-*/
 
 int main() {
     cin >> n;
 
     map = new int *[n];
-    for(int i = 0 ; i <= n; i++) {
+    for(int i = 0 ; i < n; i++) {
         fullvisit = fullvisit | 1<<i;
         map[i] = new int[n];
-        for(int j = 1; j <= n; j++) 
-            cin >> map[i][j];
+
+        for(int j = 0; j < n; j++) cin >> map[i][j];
     }
     dp = new int[fullvisit+1];
+    fill_n(dp, fullvisit+1, 0);
     // 입력 완료.
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= n; j++) {
-            if(map[i][j] != 0) {
-                int bit = 1<<
-                dp[fullvisit]
-            }
-        }
-    }
+    
+    // for(int i = 0; i < n; i++) {
+    //     for(int j = 0; j < n; j++) {
+    //         cout << map[i][j] << " ";
+    //     }
+    //     cout << "\n";
+    // }
 
-    // 현재 0번 위치에 있으며, 0번만 방문하였음.
-    cout << circuit2(0, 0, 0);
+    // for(int i = 0; i < n; i++)
+    //     if(map[i][0] != 0) {
+    //         int bit = 1<<i;
+    //         dp[fullvisit - bit] = map[i][0];
+    //     }
+    
+    // cout << "\nDebug\n";
+    // for(int i = 0; i < fullvisit; i++) {
+    //     cout << dp[i]<< " ";
+    //     if( i % 20 == 0) cout <<endl;
+    // }
+    cout << circuit2(0, 0);
 }
+
+/*
+4
+0 10 15 20
+5 0 9 10
+6 13 0 12
+8 8 9 0
+
+*/
