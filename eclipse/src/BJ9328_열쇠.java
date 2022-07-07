@@ -51,7 +51,7 @@ public class BJ9328_열쇠 {
 			for(int r = 1; r <= R; r++) {
 				String ini = br.readLine();
 				for(int c = 1; c <= C; c++) {
-					map[r][c] = ini.charAt(c);
+					map[r][c] = ini.charAt(c-1);
 					if (map[r][c] >= 'A' && map[r][c] <= 'Z')
 						// 소문자로 바꿔서 넣음.
 						doors.add(new door(r, c, map[r][c] + 32));
@@ -71,9 +71,11 @@ public class BJ9328_열쇠 {
 			// 상하좌우 네 개의 라인에 대해서 진행.
 			int maxdoc = 0;
 			for(int i = 1; i <= C; i++)
-				for(int r = 1; r <= R; r += R-1)
-					if( (map[r][i] >= 'a' && map[r][i] <= 'z') || map[r][i] == '.' || map[r][i] == '$')
+				for(int r = 1; r <= R; r += R-1) {
+					if( (map[r][i] >= 'a' && map[r][i] <= 'z') || map[r][i] == '.' || map[r][i] == '$') {
 						maxdoc += circuit(r, i);
+					}
+				}
 			
 			for(int i = 2; i < R; i++)
 				// c = 0; c = C-1에 대해 진행.
@@ -93,54 +95,28 @@ public class BJ9328_열쇠 {
 //		System.out.println("start at : " + sr + " " + sc);
 		int doccount = 0;
 		
-		while(!que.isEmpty()) {
-			location loc = que.poll();
-			
-			// loc에 대한 처리.
-			int locval = map[loc.r][loc.c];
-			if(locval == '$') doccount++;
-			else if( locval >= 'a' && locval <= 'z'){
-				for(door d : doors) {
-					if(d.req == locval) {
-						map[d.r][d.c] = 0;
-						for(int delta = 0; delta < 4; delta++) {
-							int nr = d.r + dr[delta];
-							int nc = d.c + dc[delta];
-							
-							if(map[nr][nc] == 0) que.add(new location(nr, nc));
-						}
-					}
-				}
-			}
-			map[loc.r][loc.c] = 0; 
-			
-			for(int delta = 0; delta < 4; delta++) {
-				
-			}
-		}
-		
+		// 초기값에 대한 처리.
 		// 문서 먹으면 +1
 		if(map[sr][sc] == '$') doccount++;
 		// 열쇠를 만났으면 
-		else if(map[sr][sc] >= 'a' && map[sr][sc] <= 'z') {
-			for(door dor : doors)
-				if(dor.req == map[sr][sc]) {
-					map[dor.r][dor.c] = '.';
-					for(int d2 = 0; d2 < 4; d2++) {
-						int nr2 = dor.r + dr[d2];
-						int nc2 = dor.c + dc[d2];
+		else if(map[sr][sc] >= 'a' && map[sr][sc] <= 'z') que.addAll(opendoor(map[sr][sc]));
 
-						if(map[nr2][nc2] == 0) que.add(new location(nr2, nc2));
-					}
-				}
-		}
-		map[sr][sc] = '!';
-		
+		map[sr][sc] = 0;
 		
 		// 루프 시작.
 		while(!que.isEmpty()) {
-			location loc = que.poll();
+//			for(int i = 0; i <= R+1; i++) {
+//				for(int j = 0; j <= C+1; j++) {
+//					System.out.print( map[i][j] == 0 ? "0 " :  (char)map[i][j] + " ");
+//				}
+//				System.out.println();
+//			}
+//			System.out.println();
 			
+			location loc = que.poll();
+			map[loc.r][loc.c] = 0; 
+			
+//			System.out.println("loc " + loc.r + " " + loc.c + "\n\n");
 			// 열쇠를 찾았을 때, 열쇠 주변에 갔던 적이 있으면, 그 위치를 재방문시킴.
 			for(int d = 0; d < 4; d++) {
 				int nr = loc.r + dr[d];
@@ -148,52 +124,44 @@ public class BJ9328_열쇠 {
 				
 				// 이동할 수 없으면 막기.
 				if(nr < 0 || nr >= R || nc < 0 || nc >= C || 
-						map[nr][nc] == '*' || map[nr][nc] == '!' ||
+						map[nr][nc] == '*' || map[nr][nc] == 0 ||
 						(map[nr][nc] >= 'A' && map[nr][nc] <= 'Z') ) continue;
 				
 				// 갈 수 있으면 que에 넣기.
-				if(map[nr][nc] == '.') {}
-				else if(map[nr][nc] == '$') { doccount++; }
-				
+				if(map[nr][nc] == '$') { doccount++; }
 				// 키를 발견했으면
-				else {
-					for(door dor : doors) {
-//						System.out.println(dor.req + " " + map[nr][nc]);
-						if(dor.req == map[nr][nc])
-							map[dor.r][dor.c] = '.';
-//							System.out.println(dor.r + " " + dor.c);
-							for(int d2 = 0; d2 < 4; d2++) {
-								int nr2 = dor.r + dr[d2];
-								int nc2 = dor.c + dc[d2];
-								
-								if(nr2 < 0 || nr2 >= R || nc2 < 0 || nc2 >= C) {
-									map[dor.r][dor.c] = '!'; 
-									que.add(new location(dor.r, dor.c));
-								}
-								else if(map[nr2][nc2] == '!') que.add(new location(nr2, nc2));
-							}
-					}
-				}
+				else if (map[nr][nc] >= 'a' && map[nr][nc] <= 'z')
+					que.addAll(opendoor(map[nr][nc]));
 				
 				que.add(new location(nr, nc));
-				map[nr][nc] = '!';
+				map[nr][nc] = 0;
 			}
-//			for(int i = 0; i < R; i++) {
-//				for(int j = 0; j < C; j++) {
-//					System.out.print((char) map[i][j]);
-//				}
-//				System.out.println();
-//			}
-//			System.out.println();
 		}
 //		System.out.println();
 		return doccount;
+	}
+
+	static LinkedList<location> opendoor(int val) {
+		LinkedList<location> que = new LinkedList<>();
+		
+		for(door dor : doors)
+			if(dor.req == val) {
+				map[dor.r][dor.c] = '.';
+				
+				for(int d2 = 0; d2 < 4; d2++) {
+					int nr2 = dor.r + dr[d2];
+					int nc2 = dor.c + dc[d2];
+
+					if(map[nr2][nc2] == 0) que.add(new location(dor.r, dor.c));
+				}
+			}
+		return que;
 	}
 }
 
 /*
 
-1
+6
 5 17
 *****************
 .............**$*
@@ -201,8 +169,6 @@ public class BJ9328_열쇠 {
 *y*x*a*p**$*$**$*
 *****************
 cz
-
-1
 7 7
 *****$*
 ..*...*
@@ -212,31 +178,23 @@ cz
 ......*
 ......*
 0
-
-1
 4 5
 *A***
 *$*a.
 **$**
 **A**
 0
-
-1
 4 5
 *A***
 *$*.a
 **$**
 **A**
 0
-
-1
 3 3
 ***
 *$*
 ***
 0
-
-1
 5 10
 **********
 ABCDEF$**a
