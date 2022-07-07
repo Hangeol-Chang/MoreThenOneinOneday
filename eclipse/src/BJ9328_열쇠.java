@@ -65,17 +65,12 @@ public class BJ9328_열쇠 {
 				for(char key : inkey.toCharArray())
 					for(door d : doors) if(d.req == key) map[d.r][d.c] = '.'; 
 			
-			// 지워진 문 디버그
-			//
-			
 			// 상하좌우 네 개의 라인에 대해서 진행.
 			int maxdoc = 0;
 			for(int i = 1; i <= C; i++)
-				for(int r = 1; r <= R; r += R-1) {
-					if( (map[r][i] >= 'a' && map[r][i] <= 'z') || map[r][i] == '.' || map[r][i] == '$') {
+				for(int r = 1; r <= R; r += R-1)
+					if( (map[r][i] >= 'a' && map[r][i] <= 'z') || map[r][i] == '.' || map[r][i] == '$')
 						maxdoc += circuit(r, i);
-					}
-				}
 			
 			for(int i = 2; i < R; i++)
 				// c = 0; c = C-1에 대해 진행.
