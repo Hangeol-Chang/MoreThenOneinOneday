@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ14003_가장긴증가하는부분수열5",
+            "request": "launch",
+            "mainClass": "BJ14003_가장긴증가하는부분수열5",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ2420_사파리월드",
             "request": "launch",
             "mainClass": "BJ2420_사파리월드",
