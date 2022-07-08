@@ -15,12 +15,9 @@ int main() {
     int n;
     cin >> n;
 
-    matrix ms[n];
     matrix map[n][n];
-    for(int i = 0; i < n; i++) {
-        cin >> ms[i].r >> ms[i].c;
-        map[i][i] = ms[i];
-    }
+    for(int i = 0; i < n; i++)
+        cin >> map[i][i].r >> map[i][i].c;
     // 입력 완료.
 
     for(int c = 0; c < n; c++) {
