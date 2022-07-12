@@ -22,6 +22,8 @@ int main() {
                 for(int d = 0; d < 4; d++) {
                     int nr = r + dr[d];
                     int nc = c + dc[d];
+
+                    map[nr][nc]--;
                 }
             }
         }
