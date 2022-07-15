@@ -29,21 +29,24 @@ public class Softeer_비밀메뉴2
         int[][] dp = new int[N+1][M+1];
         for(int i = 1; i <= N; i++)
             for(int j = 1; j <= M; j++) {
-                dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
-                if(a[i] == b[j]) dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1] + 1);
+                dp[i][j] = dp[i-1][j];
+                if(a[i] == b[j] && (dp[i-1][j-1] == dp[i][j-1])) dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1] + 1);
             }
-        System.out.print(dp[N][M]);
+        
+        int ans = 0;
+        for(int i = 1; i <= M; i++) ans = Math.max(ans, dp[N][i]);
+        System.out.print(ans);
     }
 }
 
 /*
     1 3 2 1 3 2 1 3 2 1
-2 | 0 0 1 1 1 1 1 1 1 1
-1 | 1 1 1 2 2 2 2 2 2 2
-3 | 1 2 2 2 3 3 3 3 3 3
-2 | 1 2 
-a[i] == b[j] 이면, dp[i-1][j-1] + 1과 dp[i-1][j] dp[i][j-1]을 비교,
-
-
+2 | 0 0 1 0 0 1 0 0 1 0
+1 | 1 0 1 2 0 1 2 0 1 2
+3 | 1 2 1 2 3 1 2 3 1 2
+2 | 1 2 2 2 3 4 2 3 4 2
+2 | 1 2 3 2
+a[i] != b[j] 이면 위에꺼를 가지고 내려오고, 
+a[i] == b[j] 이면 위에꺼를 가져온 거랑, 왼쪽꺼에 1더한거(만약 왼쪽꺼랑 왼쪽거 1위에꺼가 같은 수면 > 지금꺼를 안사용했다는 뜻) 비교
 
 */
