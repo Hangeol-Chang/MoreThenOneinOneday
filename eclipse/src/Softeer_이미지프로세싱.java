@@ -16,6 +16,9 @@ public class Softeer_이미지프로세싱
     static int[] dh = {-1, 1, 0, 0};
     static int[] dw = {0, 0, -1, 1};
 
+    static int[][] map;
+    static boolean[][] visited;
+
     public static class loc {
         int h, w;
         loc(int h, int w) {
@@ -33,12 +36,11 @@ public class Softeer_이미지프로세싱
         int W = Integer.parseInt(st.nextToken());
         
         // 색이 0으로 칠해지는 경우는 없기에, 맵을 0으로 초기화해도 됨.
-        int[][] map = new int[H+2][W+2];
+        map = new int[H+2][W+2];
         for(int i = 1; i <= H; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j = 1; j <= W; j++) {
+            for(int j = 1; j <= W; j++)
                 map[i][j] = Integer.parseInt(st.nextToken());
-            }
         }
         // 맵 입력 완료.
 
@@ -49,34 +51,30 @@ public class Softeer_이미지프로세싱
             int h = Integer.parseInt(st.nextToken());
             int w = Integer.parseInt(st.nextToken());
             int c = Integer.parseInt(st.nextToken());
-            int val = map[h][w];
-            map[h][w] = c;
+            
+            visited = new boolean[H+2][W+2];
 
-            Queue<loc> que = new LinkedList<>();
-            que.add(new loc(h, w));
-
-            while(!que.isEmpty()) {
-                loc now = que.poll();
-
-                for(int d = 0; d < 4; d++) {
-                    int nh = now.h + dh[d];
-                    int nw = now.w + dw[d];
-
-                    if(map[nh][nw] == val) {
-                        map[nh][nw] = c;
-                        que.add(new loc(nh, nw));
-                    }
-                }
-            }
+            dfs(h, w, map[h][w], c);
         }
 
         StringBuilder sb = new StringBuilder();
         for(int i = 1; i <= H; i++) {
-            for(int j = 1; j <= W; j++) {
-                sb.append(map[i][j] + " ");
-            }   
+            for(int j = 1; j <= W; j++) sb.append(map[i][j] + " ");
             sb.append("\n");
         }
         System.out.print(sb);
+    }
+
+    public static void dfs(int h, int w, int val, int c) {
+        map[h][w] = c;
+        visited[h][w] = true;
+
+        for(int d = 0; d < 4; d++) {
+            int nh = h + dh[d];
+            int nw = w + dw[d];
+
+            if(map[nh][nw] == val && !visited[nh][nw]) dfs(nh, nw, val, c);
+        }
+        return;
     }
 }
