@@ -5,7 +5,8 @@ using namespace std;
 
 struct car {
 	int i, time;
-	car(int iin, int tin) : i(iin), time(tin) {};	
+	car(int iin, int tin) : i(iin), time(tin) {};
+	car() {};
 };
 
 int main(int argc, char** argv)
@@ -29,37 +30,51 @@ int main(int argc, char** argv)
 	fill_n(crossTime, N+1, -1);
 
 	// for(int i = 1; i <= N; i++) cout << " " << crossTime[i];
-	// 차가 하나라도 움직일 수 있으면 반복.
 	int carcount = N;
 	int time = 0;
 	int stuck = 0;
+
+	struct car set[4];
+	bool cango[4];
+	// 제일 앞 차들 가져오기.
+	for(int d = 0; d < 4; d++) {
+		if(cars[d].empty()) set[d] = car(0,1000000001);
+		else {
+			set[d] = cars[d].front();
+			cars[d].pop();
+		}
+	}
+
 	do {
+		fill_n(cango, 4, false);
 		stuck = 0;
 		// 각 위치의 차가 이번에 나갈 수 있는지 판단.
-		bool set[4] = {0};
 		for(int d = 0; d < 4; d++) {
-			// 현재 내 위치에 차가 없으면 다음꺼.
-			if(cars[d].empty() || cars[d].front().time > time) continue;
+			// 교차로에 도착하지 못한 차면 다음꺼 진행.
+			if(set[d].time > time) continue;
 
-			// 오른쪽 차선 인덱스.
-			int idx = (d+3)%4;
-			// 오른쪽 차선에 차가 없으면 차 set 하기
-			if(cars[idx].empty() || cars[idx].front().time > time) {
-				set[d] = true;
-			}
-			// 여기에 도달하면, 나는 교착된 것.
+			// 오른쪽 차선 인덱스
+			int idx = (d + 3) % 4;
+			// 오른쪽에 차가 없으면 
+			if(set[idx].time > time) cango[d] = true;
 			else stuck++;
 		}
-		
+
 		// 나갈 수 있는 차 내보내기.
 		for(int d = 0; d < 4; d++) {
-			if(!set[d]) continue;
+			if(!cango[d]) continue;
 
-			car out = cars[d].front();
-			cars[d].pop();
 			carcount--;
-			crossTime[out.i] = time;
+			crossTime[set[d].i] = time;
+			
+			if(cars[d].empty()) set[d] = car(0, 1000000001);
+			else {
+				set[d] = cars[d].front();
+				cars[d].pop();
+			}
 		}
+
+		// 새로운 차 들어오기.
 		time++;
 
 	} while(carcount > 0 && stuck < 4);
