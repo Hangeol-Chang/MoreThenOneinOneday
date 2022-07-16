@@ -67,6 +67,4 @@ public class Softeer_거리합구하기
         }
         System.out.println(sb);
     }
-} Softeer_거리합구하기 {
-    
 }
