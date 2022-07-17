@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ1059_좋은구간",
+            "request": "launch",
+            "mainClass": "BJ1059_좋은구간",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ14003_가장긴증가하는부분수열5",
             "request": "launch",
             "mainClass": "BJ14003_가장긴증가하는부분수열5",
