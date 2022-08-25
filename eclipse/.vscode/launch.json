@@ -2,6 +2,76 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ5532_방학숙제",
+            "request": "launch",
+            "mainClass": "BJ5532_방학숙제",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ14652_나는행복합니다",
+            "request": "launch",
+            "mainClass": "BJ14652_나는행복합니다",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ9653_스타워즈로고",
+            "request": "launch",
+            "mainClass": "BJ9653_스타워즈로고",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1417_국회의원선거",
+            "request": "launch",
+            "mainClass": "BJ1417_국회의원선거",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1284_집주소",
+            "request": "launch",
+            "mainClass": "BJ1284_집주소",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ10757_AB",
+            "request": "launch",
+            "mainClass": "BJ10757_AB",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1076_저항",
+            "request": "launch",
+            "mainClass": "BJ1076_저항",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1247부호",
+            "request": "launch",
+            "mainClass": "BJ1247부호",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1068_트리",
+            "request": "launch",
+            "mainClass": "BJ1068_트리",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1057_토너먼트",
+            "request": "launch",
+            "mainClass": "BJ1057_토너먼트",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ1059_좋은구간",
             "request": "launch",
             "mainClass": "BJ1059_좋은구간",
