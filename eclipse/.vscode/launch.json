@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ16394_홍익대학교",
+            "request": "launch",
+            "mainClass": "BJ16394_홍익대학교",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1072_게임",
+            "request": "launch",
+            "mainClass": "BJ1072_게임",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ5532_방학숙제",
             "request": "launch",
             "mainClass": "BJ5532_방학숙제",
