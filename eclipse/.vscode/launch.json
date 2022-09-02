@@ -2,6 +2,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ15740_AB9",
+            "request": "launch",
+            "mainClass": "BJ15740_AB9",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ4470_줄번호",
+            "request": "launch",
+            "mainClass": "BJ4470_줄번호",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ14928_큰수BIG",
+            "request": "launch",
+            "mainClass": "BJ14928_큰수BIG",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
+            "name": "Launch BJ1025_제곱수찾기",
+            "request": "launch",
+            "mainClass": "BJ1025_제곱수찾기",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ16394_홍익대학교",
             "request": "launch",
             "mainClass": "BJ16394_홍익대학교",
