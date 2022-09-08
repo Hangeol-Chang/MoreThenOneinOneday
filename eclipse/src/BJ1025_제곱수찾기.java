@@ -47,12 +47,13 @@ public class BJ1025_제곱수찾기 {
 
                                 nr += i;
                                 nc += j;
-                                judge(num);
+                                judge(num); 
                             }
                         }
-                        else num = (long)map[r][c];
-
-                        judge(num);
+                        else {
+                            num = (long)map[r][c];
+                            judge(num);
+                        }
                     }
                 }
             }
