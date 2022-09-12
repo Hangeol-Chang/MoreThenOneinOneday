@@ -48,9 +48,8 @@ int main() {
         // 2면이 보이는 것들.
         int min2 = 100;
         int count2 = (N-1)*4 + (N-2)*4;
-        for(int *num : indexer2) {
+        for(int *num : indexer2)
             min2 = min(min2, dice[num[0]] + dice[num[1]]);
-        }
 
         // 3면이 보이는 것들
         int min3 = 150;
@@ -59,9 +58,8 @@ int main() {
         for(int *num : indexer3) {
             int addtwo = dice[num[0]] + dice[num[1]];
 
-            for(int third : indexer3_2) {
+            for(int third : indexer3_2)
                 min3 = min(min3, addtwo + dice[third]);
-            }
         }
 
         int min1 = 50;
