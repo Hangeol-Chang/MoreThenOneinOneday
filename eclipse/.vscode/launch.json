@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BJ15964_이상한기호",
+            "request": "launch",
+            "mainClass": "BJ15964_이상한기호",
+            "projectName": "eclipse"
+        },
+        {
+            "type": "java",
             "name": "Launch BJ10699_오늘날짜",
             "request": "launch",
             "mainClass": "BJ10699_오늘날짜",
