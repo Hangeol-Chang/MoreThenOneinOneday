@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 void main() {
-    short ss = 0x8c;
-    signed char sc = 0x8c;
-
-    printf("%x\n", (int)ss);
-    printf("%x\n", (int)sc);
+    int arr[3] = {5};
+    
+    for(int i = 0; i < 2; i++) {
+        printf("%d  ", arr[i]);
+    }
 }
