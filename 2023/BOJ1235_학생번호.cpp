@@ -9,14 +9,16 @@ using namespace std;
 
 int main() {
     set<string> a;
-    vector<char *> input;
 
+    char **input;
     int n;
     cin >> n;
+
+    input = (char **)malloc(n * sizeof(char *));
+
     for(int i = 0; i < n; i++) {
-        char *tmp = (char *)malloc(100);
-        cin >> tmp;
-        input.push_back(tmp);
+        input[i] = (char *)malloc(100);
+        cin >> input[i];
     }
 
     int len = 0;
@@ -27,16 +29,16 @@ int main() {
         a.clear();
 
         len--;
-        for(vector<char *>::iterator it = input.begin(); it != input.end(); it++) {
+        for(int i = 0; i < n; i++) {
 
-            pair<set<string>::iterator, bool> res = a.insert(string(*it + len));
-            cout << *(res.first) << endl;
+            pair<set<string>::iterator, bool> res = a.insert(string(input[i] + len));
+            // cout << *(res.first) << endl;
             if(!res.second) goto cont; 
         }
 
         break;
         cont:;
-        cout << endl;
+        // cout << endl;
     }
 
     cout << totlen - len;
