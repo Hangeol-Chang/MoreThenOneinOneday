@@ -72,6 +72,7 @@ void run(int st, int cutNum, int cutTargetNum) {
     for (int i = st; i < N; i++) {
         if(ans > 0) return;
         // i번쩨 나무를 자름.
+        // 더 괜찮은 백트래킹 방법이 필요.
         cuted[i] = 1;
         run(i + 1, cutNum + 1, cutTargetNum);
         cuted[i] = 0;
