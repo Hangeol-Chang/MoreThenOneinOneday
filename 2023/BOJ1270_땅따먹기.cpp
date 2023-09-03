@@ -1,53 +1,48 @@
 #include <iostream>
 #include <unordered_map>
-#include <string>
 #include <sstream>
 
 using namespace std;
 
 int main() {
-    int T; cin >> T;
+    ios::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+
+    int T; 
+    cin >> T;
+    cin.ignore();
+    
+    unordered_map<long long, int> mm;
     
     for(int t = 1; t <= T; t++) {
-        int N; cin >> N;
-        int half = N/2;
+        mm.clear();
 
-        unordered_map<long long, int> mm;
-        int occupied = 0;
-    
-        for(int i = 1; i < N; i++) {
-            string line;
-            getline(cin, line);
+        string line;
+        getline(cin, line);
 
-            stringstream text_stream(line);
-            string item;
+        stringstream text_stream(line);
+        string item;
+
+        getline(text_stream, item, ' ');
+        int N = stoi(item);
+        
+        int limit = N/2 + 1;
+        long long occupied = 0;
+
+        long long tmpnum; 
+        while(std::getline(text_stream, item, ' ')) {
+            tmpnum = stol(item);
             
-            getline(text_stream, item, ' ');
+            mm[tmpnum]++;
 
-            unordered_map<long long, int>::iterator it = mm.find(tmpnum);
-            while(std::getline(text_stream, item, ' ')) {
-                int tmpnum = stoi(item);
-                int q = 0;
-                
-                if(it != mm.end()) {
-                    mm[tmpnum] = it->second + 1;
-                    q = it->second + 1;
-                }
-                else {
-                    mm[tmpnum] = 1;
-                    q = 1;
-                }
-                if(q > N/2) {
-                    occupied = tmpnum;
-                    break;
-                }
-            }
+            if(mm[tmpnum] >= limit) {
+                occupied = tmpnum;
+                break;
+            } 
+        }
 
-        }
-        cin.ignore();
-        if(occupied > 0) {
-            cout << occupied << "\n";
-        }
-        else  cout << "SYJKGW\n";
+        if(occupied)    cout << occupied << "\n";
+        else                cout << "SYJKGW\n";
     }
+    return 0;
 }
