@@ -3,6 +3,7 @@
 #include <string>
 #include <cstring>
 #include <unordered_map>
+#include <queue>
 
 /*
     병사 N명으로, 적의 공격을 순서대로 막는다.
@@ -20,47 +21,64 @@
 */
 
 int solution(int n, int k, std::vector<int> enemy) {
-    std::unordered_map<int, int> now_soldiers;
-    std::unordered_map<int, int> nex_soldiers;
-
-    now_soldiers[k] = n;
+    // v2 로직
+    std::priority_queue<int> enemies;
 
     int now = 0;
+    int total_enemy = 0;
     while(true) {
-        // Debug
-        // printf("Round: %d\n", now);
-        // printf("Now soldiers: \n");
-        // for(const auto& soldier : now_soldiers) {
-        //     printf("soldier - (%d, %d)\n", soldier.first, soldier.second);
-        // }
-        // printf("\n");
-
-        for(const std::pair<int, int>& soldier : now_soldiers) {
-            if(soldier.second >= enemy[now]) {
-                int orig_val = 0;
-                if(nex_soldiers.find(soldier.first) != nex_soldiers.end()) {
-                    orig_val = nex_soldiers[soldier.first];
-                }
-                nex_soldiers[soldier.first] = std::max(orig_val, soldier.second - enemy[now]);
+        // printf("now: %d, total_enemy: %d, k: %d\n", now, total_enemy, k);
+        if(now >= enemy.size()) { return now; }
+        
+        int now_enemy = enemy[now];
+        total_enemy += now_enemy;
+        enemies.push(now_enemy);
+        
+        if(total_enemy > n) {
+            // 무적권 사용 가능할 때.
+            if(k > 0) {
+                int e = enemies.top();
+                enemies.pop();
+                total_enemy -= e;
+                k--;
             }
-            if(soldier.first > 0) {
-                int orig_val = 0;
-                if(nex_soldiers.find(soldier.first - 1) != nex_soldiers.end()) {
-                    orig_val = nex_soldiers[soldier.first - 1];
-                }
-                nex_soldiers[soldier.first - 1] = std::max(orig_val, soldier.second);
+            else {
+                return now;
             }
         }
-
-        // 다음 라운드용 정리.
-        now_soldiers.swap(nex_soldiers);
-        nex_soldiers.clear();
-
-        // 못 통과했으면 break;
-        if(now_soldiers.empty()) { break; }
         now++;
-        if(now >= enemy.size()) { break; }
     }
+
+
+    // 일부 시관초과 발생한 v1 로직
+    // std::unordered_map<int, int> now_soldiers;
+    // std::unordered_map<int, int> nex_soldiers;
+    // now_soldiers[k] = n;
+    // int now = 0;
+    // while(true) {
+    //     for(const auto& soldier : now_soldiers) {
+    //         // 병사 소모
+    //         if(soldier.second >= enemy[now]) {
+    //             auto it = nex_soldiers.find(soldier.first);
+    //             int orig_val = (it != nex_soldiers.end()) ? it->second : 0;
+    //             nex_soldiers[soldier.first] = std::max(orig_val, soldier.second - enemy[now]);
+    //         }
+    //         // 무적권 사용
+    //         if(soldier.first > 0) {
+    //             auto it = nex_soldiers.find(soldier.first - 1);
+    //             int orig_val = (it != nex_soldiers.end()) ? it->second : 0;
+    //             nex_soldiers[soldier.first - 1] = std::max(orig_val, soldier.second);
+    //         }
+    //     }
+
+    //     now_soldiers.swap(nex_soldiers);
+    //     nex_soldiers.clear();
+    //     nex_soldiers.reserve(now_soldiers.size()); // 다음 라운드에 맞게 버킷 미리 확보
+
+    //     if(now_soldiers.empty()) { break; }
+    //     now++;
+    //     if(now >= enemy.size()) { break; }
+    // }
     return now;
 }
 
